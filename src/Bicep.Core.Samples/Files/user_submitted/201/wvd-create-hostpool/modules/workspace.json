@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "dev",
+      "templateHash": "10744375107263133706"
+    }
+  },
+  "parameters": {
+    "workSpaceName": {
+      "type": "string"
+    },
+    "workspaceLocation": {
+      "type": "string"
+    },
+    "applicationGroupReferencesArr": {
+      "type": "array"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.DesktopVirtualization/workspaces",
+      "apiVersion": "2019-12-10-preview",
+      "name": "[parameters('workSpaceName')]",
+      "location": "[parameters('workspaceLocation')]",
+      "properties": {
+        "applicationGroupReferences": "[parameters('applicationGroupReferencesArr')]"
+      }
+    }
+  ]
+}

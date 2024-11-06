@@ -1,0 +1,27 @@
+<!--
+  Do not include this project in the solution. It is intended to validate our MSBuild task.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <!-- 
+    Pickup latest available packages (including prerelease) from local feed configured in NuGet.config.
+  -->
+  <ItemGroup>
+    <PackageReference Include="Azure.Bicep.CommandLine.$(RuntimeSuffix)" Version="*-*" />
+    <PackageReference Include="Azure.Bicep.MSBuild" Version="*-*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Bicep Include="empty.bicep"/>
+    <Bicep Include="empty2.bicep"/>
+    <Bicep Include="skip.bicep" NoBuild="true" />
+    <Bicep Include="skip2.bicep" NoBuild="true" />
+  </ItemGroup>
+</Project>
+

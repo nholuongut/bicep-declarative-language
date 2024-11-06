@@ -1,0 +1,98 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "dev",
+      "templateHash": "2746139478597172822"
+    }
+  },
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    },
+    "appName": {
+      "type": "string"
+    },
+    "appServicePlanID": {
+      "type": "string"
+    },
+    "APPINSIGHTS_INSTRUMENTATIONKEY": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "webSiteName": "[toLower(format('wapp-{0}', parameters('appName')))]"
+  },
+  "resources": {
+    "appService": {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2020-06-01",
+      "name": "[variables('webSiteName')]",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "tags": {
+        "displayName": "Website",
+        "ProjectName": "[parameters('appName')]"
+      },
+      "properties": {
+        "serverFarmId": "[parameters('appServicePlanID')]",
+        "httpsOnly": true,
+        "siteConfig": {
+          "minTlsVersion": "1.2"
+        }
+      }
+    },
+    "appServiceLogging": {
+      "type": "Microsoft.Web/sites/config",
+      "apiVersion": "2020-06-01",
+      "name": "[format('{0}/logs', variables('webSiteName'))]",
+      "properties": {
+        "applicationLogs": {
+          "fileSystem": {
+            "level": "Warning"
+          }
+        },
+        "httpLogs": {
+          "fileSystem": {
+            "retentionInMb": 40,
+            "enabled": true
+          }
+        },
+        "failedRequestsTracing": {
+          "enabled": true
+        },
+        "detailedErrorMessages": {
+          "enabled": true
+        }
+      },
+      "dependsOn": [
+        "appService"
+      ]
+    },
+    "appServiceAppSettings": {
+      "type": "Microsoft.Web/sites/config",
+      "apiVersion": "2020-06-01",
+      "name": "[format('{0}/appsettings', variables('webSiteName'))]",
+      "properties": {
+        "APPINSIGHTS_INSTRUMENTATIONKEY": "[parameters('APPINSIGHTS_INSTRUMENTATIONKEY')]"
+      },
+      "dependsOn": [
+        "appService"
+      ]
+    },
+    "appServiceSiteExtension": {
+      "type": "Microsoft.Web/sites/siteextensions",
+      "apiVersion": "2020-06-01",
+      "name": "[format('{0}/Microsoft.ApplicationInsights.AzureWebsites', variables('webSiteName'))]",
+      "dependsOn": [
+        "appService"
+      ]
+    }
+  }
+}

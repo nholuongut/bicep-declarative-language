@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "dev",
+      "templateHash": "16607298942843687227"
+    }
+  },
+  "variables": {
+    "deploymentLocation": "[deployment().location]",
+    "scopesWithArmRepresentation": {
+      "tenant": "[tenant()]",
+      "managementGroup": "[managementGroup()]"
+    }
+  },
+  "resources": {}
+}

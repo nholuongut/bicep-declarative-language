@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
+    <!-- disable warnings about assemblies in non-lib paths -->
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <AssemblyName>Azure.Bicep.MSBuild</AssemblyName>
+    <RootNamespace>Azure.Bicep.MSBuild</RootNamespace>
+    <EnableNuget>true</EnableNuget>
+    <PackageTags>CLI;compiler</PackageTags>
+    <Description>Bicep MSBuild tasks</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="build\Azure.Bicep.MSBuild.*" PackagePath="build\" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="buildMultiTargeting\Azure.Bicep.MSBuild.*" PackagePath="buildMultiTargeting\" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- do not upgrade these packages - we need to support msbuild 16 -->
+    <PackageReference Include="Microsoft.Build.Framework" Version="17.12.6" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.11.4" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Nerdbank.GitVersioning" Version="3.6.146" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "dev",
+      "templateHash": "5377129410411330773"
+    }
+  },
+  "variables": {
+    "bicepVarArray": [
+      "Michael",
+      "Dwight",
+      "Jim",
+      "Pam"
+    ]
+  },
+  "resources": {},
+  "outputs": {
+    "out1": {
+      "type": "array",
+      "copy": {
+        "count": "[length(variables('bicepVarArray'))]",
+        "input": {
+          "element": "[variables('bicepVarArray')[copyIndex()]]"
+        }
+      }
+    },
+    "out2": {
+      "type": "array",
+      "copy": {
+        "count": "[length(variables('bicepVarArray'))]",
+        "input": {
+          "element": "[variables('bicepVarArray')[copyIndex()]]"
+        }
+      }
+    },
+    "out3": {
+      "type": "array",
+      "copy": {
+        "count": "[length(variables('bicepVarArray'))]",
+        "input": {
+          "element": "[variables('bicepVarArray')[copyIndex()]]"
+        }
+      }
+    }
+  }
+}

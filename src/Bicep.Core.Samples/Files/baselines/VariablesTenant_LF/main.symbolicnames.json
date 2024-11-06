@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "dev",
+      "templateHash": "1659806855366454279"
+    }
+  },
+  "variables": {
+    "deploymentLocation": "[deployment().location]",
+    "scopesWithArmRepresentation": {
+      "tenant": "[tenant()]"
+    }
+  },
+  "resources": {}
+}

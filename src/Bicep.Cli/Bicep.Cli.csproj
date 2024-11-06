@@ -1,0 +1,63 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>bicep</AssemblyName>
+    <StartupObject>Bicep.Cli.Program</StartupObject>
+    <!-- .net by default does not package up the native dependencies -->
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <!-- enable custom targets to generate a NOTICE file and embed it as a resource -->
+    <AddNoticeAsEmbeddedResource>true</AddNoticeAsEmbeddedResource>
+    <AddLicenseAsEmbeddedResource>true</AddLicenseAsEmbeddedResource>
+
+    <!-- enable trimmer warnings for Bicep CLI and projects it references -->
+    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+    <!-- restore pre-.net7 trim behavior https://learn.microsoft.com/en-us/dotnet/core/compatibility/deployment/7.0/trim-all-assemblies -->
+    <TrimMode>partial</TrimMode>
+
+    <SuppressTrimAnalysisWarnings>true</SuppressTrimAnalysisWarnings>
+    <PublishSingleFile>true</PublishSingleFile>
+    <PublishTrimmed>true</PublishTrimmed>
+    <!-- restore pre-.net8 trim behavior https://learn.microsoft.com/en-us/dotnet/core/compatibility/serialization/8.0/publishtrimmed -->
+    <JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.1" />
+    <PackageReference Include="Sarif.Sdk" Version="4.5.4" />
+    <PackageReference Include="StreamJsonRpc" Version="2.19.27" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bicep.Core\Bicep.Core.csproj" />
+    <ProjectReference Include="..\Bicep.Decompiler\Bicep.Decompiler.csproj" />
+    <ProjectReference Include="../Bicep.Local.Deploy/Bicep.Local.Deploy.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="CliResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CliResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="CliResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CliResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TrimmerRootDescriptor Include="TrimmerRoots.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Nerdbank.GitVersioning" Version="3.6.146" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,65 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "dev",
+      "templateHash": "1297320721662732846"
+    }
+  },
+  "parameters": {
+    "prefix": {
+      "type": "string"
+    },
+    "hubId": {
+      "type": "string"
+    }
+  },
+  "resources": {
+    "publicIp": {
+      "type": "Microsoft.Network/publicIPAddresses",
+      "apiVersion": "2020-06-01",
+      "name": "[format('{0}-fwl-ip', parameters('prefix'))]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "publicIPAddressVersion": "IPv4",
+        "publicIPAllocationMethod": "Static"
+      },
+      "sku": {
+        "name": "Standard"
+      }
+    },
+    "fwl": {
+      "type": "Microsoft.Network/azureFirewalls",
+      "apiVersion": "2020-06-01",
+      "name": "[format('{0}-fwl', parameters('prefix'))]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "[format('{0}-fwl-ipconf', parameters('prefix'))]",
+            "properties": {
+              "subnet": {
+                "id": "[format('{0}/subnets/AzureFirewallSubnet', parameters('hubId'))]"
+              },
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', format('{0}-fwl-ip', parameters('prefix')))]"
+              }
+            }
+          }
+        ]
+      },
+      "dependsOn": [
+        "publicIp"
+      ]
+    }
+  },
+  "outputs": {
+    "privateIp": {
+      "type": "string",
+      "value": "[reference('fwl').ipConfigurations[0].properties.privateIPAddress]"
+    }
+  }
+}

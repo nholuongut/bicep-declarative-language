@@ -1,0 +1,76 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "dev",
+      "templateHash": "3759677130320545448"
+    }
+  },
+  "parameters": {
+    "namespaceName": {
+      "type": "string"
+    },
+    "eventHubSku": {
+      "type": "string",
+      "defaultValue": "Standard",
+      "allowedValues": [
+        "Standard",
+        "Basic"
+      ]
+    },
+    "skuCapacity": {
+      "type": "int",
+      "defaultValue": 1,
+      "allowedValues": [
+        1,
+        2,
+        4
+      ]
+    },
+    "eventHubName": {
+      "type": "string"
+    },
+    "consumerGroupName": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "resources": {
+    "namespace": {
+      "type": "Microsoft.EventHub/namespaces",
+      "apiVersion": "2017-04-01",
+      "name": "[parameters('namespaceName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[parameters('eventHubSku')]",
+        "tier": "[parameters('eventHubSku')]",
+        "capacity": "[parameters('skuCapacity')]"
+      },
+      "properties": {}
+    },
+    "eventHub": {
+      "type": "Microsoft.EventHub/namespaces/eventhubs",
+      "apiVersion": "2017-04-01",
+      "name": "[format('{0}/{1}', parameters('namespaceName'), parameters('eventHubName'))]",
+      "properties": {},
+      "dependsOn": [
+        "namespace"
+      ]
+    },
+    "consumerGroup": {
+      "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+      "apiVersion": "2017-04-01",
+      "name": "[format('{0}/{1}', format('{0}/{1}', parameters('namespaceName'), parameters('eventHubName')), parameters('consumerGroupName'))]",
+      "properties": {},
+      "dependsOn": [
+        "eventHub"
+      ]
+    }
+  }
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "label": "2019-06-01-preview",
+    "kind": "class",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `Microsoft.Resources/templateSpecs`  \nAPI Version: `2019-06-01-preview`  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "00000003",
+    "filterText": "'microsoft.resources/templatespecs@2019-06-01-preview'",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "'Microsoft.Resources/templateSpecs@2019-06-01-preview'"
+    }
+  },
+  {
+    "label": "2021-03-01-preview",
+    "kind": "class",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `Microsoft.Resources/templateSpecs`  \nAPI Version: `2021-03-01-preview`  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "00000002",
+    "filterText": "'microsoft.resources/templatespecs@2021-03-01-preview'",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "'Microsoft.Resources/templateSpecs@2021-03-01-preview'"
+    }
+  },
+  {
+    "label": "2021-05-01",
+    "kind": "class",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `Microsoft.Resources/templateSpecs`  \nAPI Version: `2021-05-01`  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "00000001",
+    "filterText": "'microsoft.resources/templatespecs@2021-05-01'",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "'Microsoft.Resources/templateSpecs@2021-05-01'"
+    }
+  },
+  {
+    "label": "2022-02-01",
+    "kind": "class",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `Microsoft.Resources/templateSpecs`  \nAPI Version: `2022-02-01`  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "00000000",
+    "filterText": "'microsoft.resources/templatespecs@2022-02-01'",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "'Microsoft.Resources/templateSpecs@2022-02-01'"
+    }
+  }
+]

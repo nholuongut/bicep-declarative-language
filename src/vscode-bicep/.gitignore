@@ -1,0 +1,10 @@
+out
+server
+node_modules
+*.vsix
+.vscode-test
+coverage
+syntaxes/bicep.tmlanguage
+syntaxes/language-configuration.json
+bicepLanguageServer
+ThirdPartyNotices.txt

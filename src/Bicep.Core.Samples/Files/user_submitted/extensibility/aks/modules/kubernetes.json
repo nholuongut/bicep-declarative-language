@@ -1,0 +1,200 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.1-experimental",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_EXPERIMENTAL_WARNING": "This template uses ARM features that are experimental. Experimental features should be enabled for testing purposes only, as there are no guarantees about the quality or stability of these features. Do not enable these settings for any production usage, or your production environment may be subject to breaking.",
+    "_EXPERIMENTAL_FEATURES_ENABLED": [
+      "Extensibility"
+    ],
+    "_generator": {
+      "name": "bicep",
+      "version": "dev",
+      "templateHash": "13665388069175504099"
+    }
+  },
+  "parameters": {
+    "kubeConfig": {
+      "type": "securestring"
+    }
+  },
+  "variables": {
+    "backName": "azure-vote-back",
+    "backPort": 6379,
+    "frontName": "azure-vote-front",
+    "frontPort": 80
+  },
+  "imports": {
+    "kubernetes": {
+      "provider": "Kubernetes",
+      "version": "1.0.0",
+      "config": {
+        "kubeConfig": "[parameters('kubeConfig')]",
+        "namespace": "default"
+      }
+    }
+  },
+  "resources": {
+    "backDeploy": {
+      "import": "kubernetes",
+      "type": "apps/Deployment@v1",
+      "properties": {
+        "metadata": {
+          "name": "[variables('backName')]"
+        },
+        "spec": {
+          "replicas": 1,
+          "selector": {
+            "matchLabels": {
+              "app": "[variables('backName')]"
+            }
+          },
+          "template": {
+            "metadata": {
+              "labels": {
+                "app": "[variables('backName')]"
+              }
+            },
+            "spec": {
+              "containers": [
+                {
+                  "name": "[variables('backName')]",
+                  "image": "mcr.microsoft.com/oss/bitnami/redis:6.0.8",
+                  "env": [
+                    {
+                      "name": "ALLOW_EMPTY_PASSWORD",
+                      "value": "yes"
+                    }
+                  ],
+                  "resources": {
+                    "requests": {
+                      "cpu": "100m",
+                      "memory": "128Mi"
+                    },
+                    "limits": {
+                      "cpu": "250m",
+                      "memory": "256Mi"
+                    }
+                  },
+                  "ports": [
+                    {
+                      "containerPort": "[variables('backPort')]",
+                      "name": "redis"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      "metadata": {
+        "description": "Application back-end deployment (redis)"
+      }
+    },
+    "backSvc": {
+      "import": "kubernetes",
+      "type": "core/Service@v1",
+      "properties": {
+        "metadata": {
+          "name": "[variables('backName')]"
+        },
+        "spec": {
+          "ports": [
+            {
+              "port": "[variables('backPort')]"
+            }
+          ],
+          "selector": {
+            "app": "[variables('backName')]"
+          }
+        }
+      },
+      "metadata": {
+        "description": "Configure back-end service"
+      }
+    },
+    "frontDeploy": {
+      "import": "kubernetes",
+      "type": "apps/Deployment@v1",
+      "properties": {
+        "metadata": {
+          "name": "[variables('frontName')]"
+        },
+        "spec": {
+          "replicas": 1,
+          "selector": {
+            "matchLabels": {
+              "app": "[variables('frontName')]"
+            }
+          },
+          "template": {
+            "metadata": {
+              "labels": {
+                "app": "[variables('frontName')]"
+              }
+            },
+            "spec": {
+              "nodeSelector": {
+                "beta.kubernetes.io/os": "linux"
+              },
+              "containers": [
+                {
+                  "name": "[variables('frontName')]",
+                  "image": "mcr.microsoft.com/azuredocs/azure-vote-front:v1",
+                  "resources": {
+                    "requests": {
+                      "cpu": "100m",
+                      "memory": "128Mi"
+                    },
+                    "limits": {
+                      "cpu": "250m",
+                      "memory": "256Mi"
+                    }
+                  },
+                  "ports": [
+                    {
+                      "containerPort": "[variables('frontPort')]"
+                    }
+                  ],
+                  "env": [
+                    {
+                      "name": "REDIS",
+                      "value": "[variables('backName')]"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      "metadata": {
+        "description": "Application front-end deployment (website)"
+      }
+    },
+    "frontSvc": {
+      "import": "kubernetes",
+      "type": "core/Service@v1",
+      "properties": {
+        "metadata": {
+          "name": "[variables('frontName')]"
+        },
+        "spec": {
+          "type": "LoadBalancer",
+          "ports": [
+            {
+              "port": "[variables('frontPort')]"
+            }
+          ],
+          "selector": {
+            "app": "[variables('frontName')]"
+          }
+        }
+      },
+      "metadata": {
+        "description": "Configure front-end service"
+      }
+    }
+  }
+}

@@ -1,0 +1,833 @@
+{
+  "name": "vscode-bicep",
+  "displayName": "Bicep",
+  "description": "Bicep language support for Visual Studio Code",
+  "author": "Microsoft Corporation",
+  "license": "MIT",
+  "version": "0.0.0-placeholder",
+  "publisher": "ms-azuretools",
+  "icon": "icons/bicep-logo-256.png",
+  "preview": false,
+  "aiKey": "0c6ae279ed8443289764825290e4f9e2-1a736e7c-1324-4338-be46-fc2a58ae4d14-7255",
+  "engines": {
+    "vscode": "^1.82.0"
+  },
+  "categories": [
+    "Azure",
+    "Programming Languages"
+  ],
+  "capabilities": {
+    "virtualWorkspaces": false
+  },
+  "keywords": [
+    "Bicep",
+    "Azure Resource Manager",
+    "ARM Template",
+    "Azure"
+  ],
+  "bugs": {
+    "url": "https://github.com/nholuongut/bicep-declarative-language/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nholuongut/bicep-declarative-language"
+  },
+  "galleryBanner": {
+    "color": "E7F1FA",
+    "theme": "light"
+  },
+  "homepage": "https://github.com/nholuongut/bicep-declarative-language/blob/main/README.md",
+  "activationEvents": [
+    "onWebviewPanel:bicep.visualizer",
+    "onWebviewPanel:bicep.deployPane"
+  ],
+  "main": "./out/extension",
+  "enabledApiProposals": [],
+  "contributes": {
+    "configurationDefaults": {
+      "[bicep]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "files.insertFinalNewline": true,
+        "editor.suggestSelection": "first",
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggest.showWords": false
+      },
+      "[bicep-params]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "files.insertFinalNewline": true,
+        "editor.suggestSelection": "first",
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggest.showWords": false
+      }
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Bicep",
+      "properties": {
+        "bicep.decompileOnPaste": {
+          "type": "boolean",
+          "description": "Automatically convert pasted JSON values, JSON ARM templates or resources from a JSON ARM template into Bicep (use Undo to revert)",
+          "default": true
+        },
+        "bicep.enableOutputTimestamps": {
+          "type": "boolean",
+          "description": "Prepend each line displayed in the Bicep Operations output channel with a timestamp.",
+          "default": true,
+          "$comment": "This is interpreted by vscode-azuretools package and the name has to be in the following format: <extensionConfigurationPrefix>.enableOutputTimestamps"
+        },
+        "bicep.suppressedWarnings": {
+          "type": "array",
+          "description": "Warnings that are being suppressed because a 'Don't show again' button was pressed. Remove items to reset.",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "bicep.enableSurveys": {
+          "type": "boolean",
+          "description": "Enable occasional surveys to collect feedback that helps us improve the Bicep extension.",
+          "default": true
+        },
+        "bicep.completions.getAllAccessibleAzureContainerRegistries": {
+          "type": "boolean",
+          "description": "When completing 'br:' module references, query Azure for all container registries accessible to the user (may be slow). If this option is off, only registries configured under moduleAliases in bicepconfig.json will be listed.",
+          "default": false
+        },
+        "bicep.experimental.disableDeploymentPane": {
+          "type": "boolean",
+          "description": "Disable the experimental Bicep Deployment Pane.",
+          "default": false
+        },
+        "bicep.trace.server": {
+          "type": "string",
+          "enum": [
+            "Off",
+            "Messages",
+            "Verbose"
+          ],
+          "default": "Off",
+          "description": "Configure tracing of messages sent to the Bicep language server.",
+          "scope": "window"
+        }
+      }
+    },
+    "jsonValidation": [
+      {
+        "fileMatch": "bicepconfig.json",
+        "url": "./schemas/bicepconfig.schema.json"
+      }
+    ],
+    "languages": [
+      {
+        "id": "bicep",
+        "aliases": [
+          "Bicep",
+          "bicep"
+        ],
+        "extensions": [
+          ".bicep"
+        ],
+        "configuration": "./syntaxes/language-configuration.json",
+        "icon": {
+          "light": "./icons/bicep-file.svg",
+          "dark": "./icons/bicep-file.svg"
+        }
+      },
+      {
+        "id": "jsonc",
+        "filenames": [
+          "bicepconfig.json"
+        ]
+      },
+      {
+        "id": "bicep-params",
+        "aliases": [
+          "Bicep Parameters",
+          "Bicep Params"
+        ],
+        "extensions": [
+          ".bicepparam"
+        ],
+        "configuration": "./syntaxes/language-configuration.json",
+        "icon": {
+          "light": "./icons/bicepparam-file.svg",
+          "dark": "./icons/bicepparam-file.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "scopeName": "markdown.bicep.codeblock",
+        "path": "./syntaxes/bicep.codeblock.json",
+        "injectTo": [
+          "text.html.markdown"
+        ],
+        "embeddedLanguages": {
+          "meta.embedded.block.bicep": "bicep"
+        }
+      },
+      {
+        "language": "bicep",
+        "scopeName": "source.bicep",
+        "path": "./syntaxes/bicep.tmlanguage"
+      },
+      {
+        "language": "bicep-params",
+        "scopeName": "source.bicep",
+        "path": "./syntaxes/bicep.tmlanguage"
+      }
+    ],
+    "commands": [
+      {
+        "command": "bicep.showDeployPane",
+        "when": "!config.bicep.experimental.disableDeploymentPane",
+        "title": "Show Deployment Pane",
+        "category": "Bicep",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "bicep.showDeployPaneToSide",
+        "when": "!config.bicep.experimental.disableDeploymentPane",
+        "title": "Show Deployment Pane to the Side",
+        "category": "Bicep",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "bicep.showVisualizer",
+        "title": "Open Bicep Visualizer",
+        "category": "Bicep",
+        "icon": "$(type-hierarchy-sub)"
+      },
+      {
+        "command": "bicep.showVisualizerToSide",
+        "title": "Open Bicep Visualizer to the Side",
+        "category": "Bicep",
+        "icon": "$(type-hierarchy-sub)"
+      },
+      {
+        "command": "bicep.showSourceFromVisualizer",
+        "title": "Open Source",
+        "category": "Bicep",
+        "icon": "$(go-to-file)"
+      },
+      {
+        "command": "bicep.build",
+        "title": "Build ARM Template",
+        "category": "Bicep",
+        "icon": "$(output)"
+      },
+      {
+        "command": "bicep.decompile",
+        "title": "Decompile into Bicep",
+        "category": "Bicep",
+        "enablement": "!bicep.cannotDecompile || !editorFocus",
+        "$comment1": "Intentionally enabling this command when the language server has not yet been loaded, otherwise we must be loaded for all JSON files. If user selects the command when the JSON file is not an ARM template, it will load then give a meaningful error",
+        "$comment2": "Also keeping it enabled when the editor doesn't have focus, to allow command to appear enabled on e.g. right-clicking in explorer"
+      },
+      {
+        "command": "bicep.decompileParams",
+        "title": "Decompile into Bicepparams",
+        "category": "Bicep",
+        "enablement": "!bicep.cannotDecompileParams"
+      },
+      {
+        "command": "bicep.generateParams",
+        "title": "Generate Parameters File",
+        "category": "Bicep",
+        "icon": "$(output)"
+      },
+      {
+        "command": "bicep.deploy",
+        "title": "Deploy Bicep File...",
+        "category": "Bicep",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "bicep.forceModulesRestore",
+        "title": "Restore Bicep Modules (Force)",
+        "category": "Bicep"
+      },
+      {
+        "command": "bicep.insertResource",
+        "title": "Insert Resource...",
+        "category": "Bicep",
+        "icon": "$(cloud-download)"
+      },
+      {
+        "command": "bicep.importKubernetesManifest",
+        "title": "Import Kubernetes Manifest (EXPERIMENTAL)",
+        "category": "Bicep",
+        "icon": "$(cloud-download)"
+      },
+      {
+        "command": "bicep.pasteAsBicep",
+        "title": "Paste JSON as Bicep",
+        "category": "Bicep",
+        "icon": "$(clippy)"
+      },
+      {
+        "command": "bicep.createConfigFile",
+        "title": "Create Bicep Configuration File",
+        "category": "Bicep"
+      },
+      {
+        "command": "bicep.buildParams",
+        "title": "Build Parameters File",
+        "category": "Bicep",
+        "icon": "$(output)"
+      },
+      {
+        "command": "bicep.internal.showModuleSourceFile",
+        "title": "(Show a source file from a module)",
+        "category": "Bicep Internal"
+      },
+      {
+        "command": "bicep.internal.postExtraction",
+        "title": "(Perform operations after var/param/type extractions)",
+        "category": "Bicep Internal"
+      },
+      {
+        "$section": "================== Walkthrough commands (not visible to users) ==================",
+        "command": "bicep.gettingStarted.createBicepFile",
+        "title": "Create Empty Bicep File (Walkthrough)",
+        "category": "Bicep Internal"
+      },
+      {
+        "command": "bicep.gettingStarted.openBicepFile",
+        "title": "Open Existing Bicep File (Walkthrough)",
+        "category": "Bicep Internal"
+      },
+      {
+        "command": "bicep.gettingStarted.copyToClipboard",
+        "title": "Copy walkthrough code to the clipboard (Walkthrough)",
+        "category": "Bicep Internal"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "bicep.build",
+        "key": "ctrl+shift+b",
+        "mac": "cmd+alt+b",
+        "when": "resourceLangId == bicep"
+      },
+      {
+        "command": "bicep.forceModulesRestore",
+        "key": "ctrl+m r",
+        "mac": "cmd+m r",
+        "when": "resourceLangId == bicep"
+      },
+      {
+        "command": "bicep.showVisualizerToSide",
+        "key": "ctrl+k v",
+        "mac": "cmd+k v",
+        "when": "resourceLangId == bicep"
+      },
+      {
+        "command": "bicep.insertResource",
+        "key": "ctrl+k i",
+        "mac": "cmd+k i",
+        "when": "resourceLangId == bicep"
+      },
+      {
+        "command": "bicep.decompile",
+        "when": "editorFocus && (resourceLangId == json || resourceLangId == jsonc || resourceLangId == arm-template)"
+      },
+      {
+        "command": "bicep.buildParams",
+        "key": "ctrl+shift+b",
+        "mac": "cmd+alt+b",
+        "when": "resourceLangId == bicep-params"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "bicep.showDeployPaneToSide",
+          "when": "!config.bicep.experimental.disableDeploymentPane && (editorLangId == bicep || editorLangId == bicep-params)",
+          "alt": "bicep.showDeployPane",
+          "group": "navigation"
+        },
+        {
+          "command": "bicep.showVisualizerToSide",
+          "when": "editorLangId == bicep",
+          "alt": "bicep.showVisualizer",
+          "group": "navigation"
+        },
+        {
+          "command": "bicep.showSourceFromVisualizer",
+          "when": "bicepVisualizerFocus",
+          "group": "navigation"
+        },
+        {
+          "command": "bicep.insertResource",
+          "when": "editorLangId == bicep",
+          "group": "1_bicep"
+        },
+        {
+          "command": "bicep.buildParams",
+          "when": "editorLangId == bicep-params",
+          "group": "1_bicep"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "bicep.build",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_1_edit"
+        },
+        {
+          "command": "bicep.forceModulesRestore",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_1_edit"
+        },
+        {
+          "command": "bicep.generateParams",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_1_edit"
+        },
+        {
+          "command": "bicep.insertResource",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_1_edit"
+        },
+        {
+          "command": "bicep.pasteAsBicep",
+          "when": "resourceLangId == bicep",
+          "group": "9_cutcopypaste"
+        },
+        {
+          "command": "bicep.deploy",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_2_deploy"
+        },
+        {
+          "command": "bicep.showDeployPane",
+          "when": "!config.bicep.experimental.disableDeploymentPane && (resourceLangId == bicep || resourceLangId == bicep-params)",
+          "group": "2_bicep_2_deploy"
+        },
+        {
+          "command": "bicep.showDeployPaneToSide",
+          "when": "!config.bicep.experimental.disableDeploymentPane && (resourceLangId == bicep || resourceLangId == bicep-params)",
+          "group": "2_bicep_2_deploy"
+        },
+        {
+          "command": "bicep.showVisualizer",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_3_visualize"
+        },
+        {
+          "command": "bicep.showVisualizerToSide",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_3_visualize"
+        },
+        {
+          "command": "bicep.decompile",
+          "when": "resourceLangId == json || resourceLangId == jsonc || resourceLangId == arm-template",
+          "group": "9_bicep_in_json"
+        },
+        {
+          "command": "bicep.buildParams",
+          "when": "resourceLangId == bicep-params",
+          "group": "2_bicep_1_edit"
+        },
+        {
+          "command": "bicep.decompileParams",
+          "when": "resourceLangId == json || resourceLangId == jsonc",
+          "group": "9_bicep_in_json"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "bicep.build",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_1_edit"
+        },
+        {
+          "command": "bicep.forceModulesRestore",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_1_edit"
+        },
+        {
+          "command": "bicep.generateParams",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_1_edit"
+        },
+        {
+          "command": "bicep.insertResource",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_1_edit"
+        },
+        {
+          "command": "bicep.deploy",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_2_deploy"
+        },
+        {
+          "command": "bicep.showDeployPane",
+          "when": "!config.bicep.experimental.disableDeploymentPane && (resourceLangId == bicep || resourceLangId == bicep-params)",
+          "group": "2_bicep_2_deploy"
+        },
+        {
+          "command": "bicep.showDeployPaneToSide",
+          "when": "!config.bicep.experimental.disableDeploymentPane && (resourceLangId == bicep || resourceLangId == bicep-params)",
+          "group": "2_bicep_2_deploy"
+        },
+        {
+          "command": "bicep.showVisualizer",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_3_visualize"
+        },
+        {
+          "command": "bicep.showVisualizerToSide",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_3_visualize"
+        },
+        {
+          "command": "bicep.decompile",
+          "when": "resourceLangId == json || resourceLangId == jsonc || resourceLangId == arm-template",
+          "group": "9_bicep_in_json"
+        },
+        {
+          "command": "bicep.buildParams",
+          "when": "resourceLangId == bicep-params",
+          "group": "2_bicep_1_edit"
+        },
+        {
+          "command": "bicep.decompileParams",
+          "when": "resourceLangId == json || resourceLangId == jsonc",
+          "group": "9_bicep_in_json"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "bicep.build",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_1_edit"
+        },
+        {
+          "command": "bicep.forceModulesRestore",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_1_edit"
+        },
+        {
+          "command": "bicep.generateParams",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_1_edit"
+        },
+        {
+          "command": "bicep.insertResource",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_1_edit"
+        },
+        {
+          "command": "bicep.pasteAsBicep",
+          "when": "resourceLangId == bicep",
+          "group": "9_cutcopypaste"
+        },
+        {
+          "command": "bicep.deploy",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_2_deploy"
+        },
+        {
+          "command": "bicep.showDeployPane",
+          "when": "!config.bicep.experimental.disableDeploymentPane && (resourceLangId == bicep || resourceLangId == bicep-params)",
+          "group": "2_bicep_2_deploy"
+        },
+        {
+          "command": "bicep.showDeployPaneToSide",
+          "when": "!config.bicep.experimental.disableDeploymentPane && (resourceLangId == bicep || resourceLangId == bicep-params)",
+          "group": "2_bicep_2_deploy"
+        },
+        {
+          "command": "bicep.showVisualizer",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_3_visualize"
+        },
+        {
+          "command": "bicep.showVisualizerToSide",
+          "when": "resourceLangId == bicep",
+          "group": "2_bicep_3_visualize"
+        },
+        {
+          "command": "bicep.decompile",
+          "when": "resourceLangId == json || resourceLangId == jsonc || resourceLangId == arm-template",
+          "group": "9_bicep_in_json"
+        },
+        {
+          "command": "bicep.buildParams",
+          "when": "resourceLangId == bicep-params",
+          "group": "2_bicep_1_edit"
+        },
+        {
+          "command": "bicep.decompileParams",
+          "when": "resourceLangId == json || resourceLangId == jsonc",
+          "group": "9_bicep_in_json"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "bicep.build",
+          "group": "0_bicep"
+        },
+        {
+          "command": "bicep.generateParams",
+          "group": "0_bicep"
+        },
+        {
+          "command": "bicep.deploy",
+          "group": "0_bicep"
+        },
+        {
+          "command": "bicep.forceModulesRestore",
+          "group": "0_bicep"
+        },
+        {
+          "command": "bicep.insertResource",
+          "group": "0_bicep"
+        },
+        {
+          "command": "bicep.showDeployPane",
+          "when": "!config.bicep.experimental.disableDeploymentPane",
+          "group": "0_bicep"
+        },
+        {
+          "command": "bicep.showDeployPaneToSide",
+          "when": "!config.bicep.experimental.disableDeploymentPane",
+          "group": "0_bicep"
+        },
+        {
+          "command": "bicep.showVisualizer",
+          "group": "0_bicep"
+        },
+        {
+          "command": "bicep.showVisualizerToSide",
+          "group": "0_bicep"
+        },
+        {
+          "command": "bicep.importKubernetesManifest"
+        },
+        {
+          "command": "bicep.showSourceFromVisualizer",
+          "when": "never"
+        },
+        {
+          "command": "bicep.gettingStarted.createBicepFile",
+          "when": "never"
+        },
+        {
+          "command": "bicep.gettingStarted.openBicepFile",
+          "when": "never"
+        },
+        {
+          "command": "bicep.gettingStarted.copyToClipboard",
+          "when": "never"
+        },
+        {
+          "command": "bicep.buildParams",
+          "group": "0_bicep"
+        },
+        {
+          "command": "bicep.internal.showModuleSourceFile",
+          "when": "never"
+        },
+        {
+          "command": "bicep.internal.postExtraction",
+          "when": "never"
+        }
+      ]
+    },
+    "snippets": [
+      {
+        "language": "jsonc",
+        "path": "vscode-snippets/jsonc-snippets.jsonc"
+      }
+    ],
+    "walkthroughs.$comments": [
+      "Documentation: https://code.visualstudio.com/api/references/contribution-points#contributes.walkthroughs",
+      "",
+      "Automatically completes if a markdown button is pressed or there are no commands and no completion events",
+      "Available completion events include:",
+      "  onCommand:myCommand.id: Check off step when a command has been run.",
+      "  onSettingChanged:mySetting.id: Check off step once the given setting has been modified.",
+      "  onContext:contextKeyExpression: Check off step when a context key expression evaluates true.",
+      "  extensionInstalled:myExt.id: Check off step if the given extension is installed.",
+      "  onView:myView.id: Check off step once a given view becomes visible.",
+      "  onLink:https://...: Check off step once a given link has been opened via a Walkthrough.",
+      "",
+      "Passing arguments to commands: See https://github.com/Microsoft/vscode/issues/69757,",
+      "  Example: [Copy code to clipboard](command:bicep.gettingStarted.copyToClipboard?%7B%22step%22%3A%22resources%22%7D)",
+      "",
+      "Walkthrough commands (bicep.gettingStarted.xxx) are automatically marked in telemetry as being from the walkthrough.  Regular commands",
+      "  which are called from the walkthrough markdown should be marked with a query string ?walkthrough=true to have it marked in telemetry.",
+      "  Example: [Open Visualizer](command:bicep.showVisualizerToSide?%7B%22walkthrough%22%3A%22true%22%7D)"
+    ],
+    "walkthroughs": [
+      {
+        "id": "gettingStarted",
+        "title": "Getting Started with Bicep",
+        "description": "Learn about Bicep and the Bicep extension for Visual Studio Code",
+        "steps": [
+          {
+            "id": "openBicepFile",
+            "title": "Open a Bicep File",
+            "description": "To get started with Bicep extension features, open or create a Bicep file (any file with '.bicep' extension).\n[Open Bicep file](command:bicep.gettingStarted.openBicepFile)\n[Create Bicep file](command:bicep.gettingStarted.createBicepFile)\nTip: [Close the side bar for more space](command:workbench.action.closeSidebar)",
+            "media": {
+              "image": "media/walkthroughs/gettingStarted/1_BicepLogoImage.png",
+              "altText": "Bicep logo"
+            },
+            "completionEvents": [
+              "onCommand:bicep.gettingStarted.createBicepFile",
+              "onCommand:bicep.gettingStarted.openBicepFile",
+              "onLanguage:bicep"
+            ]
+          },
+          {
+            "id": "addParameters",
+            "title": "Add parameters",
+            "description": "Use Bicep's IntelliSense and snippets to help you create a deployable Bicep file in minutes.",
+            "media": {
+              "markdown": "media/walkthroughs/gettingStarted/2_Type_Params.md"
+            }
+          },
+          {
+            "id": "addResources",
+            "title": "Add resources",
+            "description": "Use Bicep's IntelliSense and snippets to help you create a deployable Bicep file in minutes.",
+            "media": {
+              "markdown": "media/walkthroughs/gettingStarted/3_Type_Resources.md"
+            }
+          },
+          {
+            "id": "visualizeYourResources",
+            "title": "Visualize your resources",
+            "description": "The Visualizer gives you a representation of the resources in your Bicep file.\n[Open Visualizer](command:bicep.showVisualizerToSide?%7B%22walkthrough%22%3A%22true%22%7D)",
+            "media": {
+              "markdown": "media/walkthroughs/gettingStarted/4_Show_Visualizer.md"
+            },
+            "completionEvents": [
+              "onCommand:bicep.showVisualizerToSide",
+              "onCommand:bicep.showVisualizer"
+            ]
+          },
+          {
+            "id": "deployToAzure",
+            "title": "Deploy to Azure",
+            "description": "It's time to get these resources into Azure. If you don't have the [Azure Account Extension](command:extension.open?%5B%22ms-vscode.azure-account%22%5D) installed, you will need it to complete this step.\n[Deploy](command:bicep.deploy?%7B%22walkthrough%22%3A%22true%22%7D)",
+            "media": {
+              "image": "media/walkthroughs/gettingStarted/5_Deploy.gif",
+              "altText": "Example of deploying Bicep file to Azure"
+            },
+            "completionEvents": [
+              "onCommand:bicep.deploy"
+            ]
+          },
+          {
+            "id": "learnMore",
+            "title": "Learn More",
+            "description": "Great Job! You've completed Getting Started with Bicep. But don't stop now!\nCheck out our [Bicep Documentation](https://aka.ms/Bicep) to learn more about importing Bicep files as [modules](https://aka.ms/bicep/docs/modules) and [other extension features](https://aka.ms/bicep/docs/vscode).\nWanna take a deep dive into the Bicep language? Take a look at [Microsoft Learn - Bicep](https://aka.ms/microsoftlearnbicep).",
+            "media": {
+              "image": "media/walkthroughs/gettingStarted/1_BicepLogoImage.png",
+              "altText": "Bicep logo"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build:prod",
+    "build": "tsc --noEmit && webpack --mode development",
+    "build:prod": "tsc --noEmit && webpack --mode production",
+    "build:e2e": "tsc -p ./tsconfig.e2e.json",
+    "watch": "webpack --watch --mode development --stats=minimal",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --report-unused-disable-directives --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "$test:e2e.comment": "use testlocal:e2e to run on a local Mac/Linux/Windows (not PowerShell) machine",
+    "test:e2e": "node ./out/test/e2e/runTests.js",
+    "test:unit": "jest --config jest.config.unit.js",
+    "test:snapshot": "jest --config jest.config.snapshot.js",
+    "test:update-snapshot": "jest --config jest.config.snapshot.js --updateSnapshot",
+    "testlocal:e2e": "(export BICEP_LANGUAGE_SERVER_PATH=${INIT_CWD}/../Bicep.LangServer/bin/Debug/net8.0/Bicep.LangServer.dll || set BICEP_LANGUAGE_SERVER_PATH=%INIT_CWD%/../Bicep.LangServer/bin/Debug/net8.0/Bicep.LangServer.dll) && npm run build && npm run build:e2e && npm run test:e2e",
+    "clean": "rimraf ./out ./coverage",
+    "package": "npm run clean && nbgv-setversion && vsce package --no-dependencies --githubBranch main --out ./vscode-bicep.vsix && nbgv-setversion --reset",
+    "package:local": "rimraf ./bicepLanguageServer && cp -r ../Bicep.LangServer/bin/Debug/net8.0 ./bicepLanguageServer && npm run package"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.11.1",
+    "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
+    "@types/cytoscape": "^3.21.7",
+    "@types/fs-extra": "^11.0.4",
+    "@types/jest": "^29.5.13",
+    "@types/mocha": "^10.0.9",
+    "@types/node": "^22.7.4",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@types/react-test-renderer": "^18.3.0",
+    "@types/semver": "^7.5.8",
+    "@types/triple-beam": "^1.3.5",
+    "@types/vscode": "^1.82.0",
+    "@types/webpack": "^5.28.5",
+    "@typescript-eslint/eslint-plugin": "^8.13.0",
+    "@typescript-eslint/parser": "^8.8.1",
+    "@vscode/test-electron": "^2.4.1",
+    "@vscode/vsce": "^3.1.0",
+    "copy-webpack-plugin": "^12.0.2",
+    "css-loader": "^7.1.2",
+    "esbuild-loader": "^4.2.2",
+    "eslint": "^9.13.0",
+    "eslint-plugin-jest": "^28.8.3",
+    "eslint-plugin-notice": "^1.0.0",
+    "eslint-plugin-react": "^7.37.2",
+    "fork-ts-checker-webpack-plugin": "^9.0.2",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-styled-components": "^7.2.0",
+    "moment": "^2.30.1",
+    "ncp": "^2.0.0",
+    "nerdbank-gitversioning": "^3.6.146",
+    "prettier": "^3.3.3",
+    "react-test-renderer": "^18.3.1",
+    "rimraf": "^6.0.1",
+    "semver": "^7.6.3",
+    "style-loader": "^4.0.0",
+    "svg-inline-loader": "^0.8.2",
+    "terser-webpack-plugin": "5.3.10",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@azure/arm-managementgroups": "2.0.2",
+    "@azure/arm-resources": "^5.2.0",
+    "@azure/arm-subscriptions": "^5.1.0",
+    "@azure/identity": "^4.5.0",
+    "@microsoft/vscode-azext-azureutils": "^3.1.1",
+    "@microsoft/vscode-azext-utils": "^2.5.10",
+    "@vscode-bicep-ui/components": "file:../vscode-bicep-ui/packages/components",
+    "@vscode-elements/react-elements": "^0.5.0",
+    "@vscode/codicons": "^0.0.36",
+    "cytoscape": "^3.30.2",
+    "cytoscape-elk": "^2.2.0",
+    "fs-extra": "^11.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.3.0",
+    "styled-components": "^6.1.13",
+    "stylis": "^4.3.4",
+    "triple-beam": "^1.4.1",
+    "vscode-languageclient": "^9.0.1",
+    "vscode-nls": "^5.2.0",
+    "winston": "^3.14.2",
+    "winston-transport": "^4.8.0"
+  },
+  "extensionDependencies": [
+    "ms-dotnettools.vscode-dotnet-runtime"
+  ]
+}

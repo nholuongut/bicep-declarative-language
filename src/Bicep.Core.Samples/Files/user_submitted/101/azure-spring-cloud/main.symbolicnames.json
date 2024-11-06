@@ -1,0 +1,211 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "dev",
+      "templateHash": "1549212874261929219"
+    }
+  },
+  "parameters": {
+    "serviceName": {
+      "type": "string"
+    },
+    "app1Name": {
+      "type": "string",
+      "defaultValue": "gateway"
+    },
+    "app2Name": {
+      "type": "string",
+      "defaultValue": "account-service"
+    },
+    "app3Name": {
+      "type": "string",
+      "defaultValue": "auth-service"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "resources": {
+    "service": {
+      "type": "Microsoft.AppPlatform/Spring",
+      "apiVersion": "2019-05-01-preview",
+      "name": "[parameters('serviceName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "S0",
+        "tier": "Standard"
+      },
+      "properties": {
+        "configServerProperties": {
+          "configServer": {
+            "gitProperty": {
+              "uri": "https://github.com/Azure-Samples/piggymetrics-config"
+            }
+          }
+        }
+      }
+    },
+    "app1": {
+      "type": "Microsoft.AppPlatform/Spring/apps",
+      "apiVersion": "2020-07-01",
+      "name": "[format('{0}/{1}', parameters('serviceName'), parameters('app1Name'))]",
+      "properties": {
+        "public": true
+      },
+      "dependsOn": [
+        "service"
+      ]
+    },
+    "app1deployment": {
+      "type": "Microsoft.AppPlatform/Spring/apps/deployments",
+      "apiVersion": "2020-07-01",
+      "name": "[format('{0}/default', format('{0}/{1}', parameters('serviceName'), parameters('app1Name')))]",
+      "properties": {
+        "source": {
+          "relativePath": "<default>",
+          "type": "Jar"
+        }
+      },
+      "dependsOn": [
+        "app1"
+      ]
+    },
+    "app2": {
+      "type": "Microsoft.AppPlatform/Spring/apps",
+      "apiVersion": "2020-07-01",
+      "name": "[format('{0}/{1}', parameters('serviceName'), parameters('app2Name'))]",
+      "properties": {
+        "public": false
+      },
+      "dependsOn": [
+        "service"
+      ]
+    },
+    "app2deployment": {
+      "type": "Microsoft.AppPlatform/Spring/apps/deployments",
+      "apiVersion": "2020-07-01",
+      "name": "[format('{0}/default', format('{0}/{1}', parameters('serviceName'), parameters('app2Name')))]",
+      "properties": {
+        "source": {
+          "relativePath": "<default>",
+          "type": "Jar"
+        }
+      },
+      "dependsOn": [
+        "app2"
+      ]
+    },
+    "app3": {
+      "type": "Microsoft.AppPlatform/Spring/apps",
+      "apiVersion": "2020-07-01",
+      "name": "[format('{0}/{1}', parameters('serviceName'), parameters('app3Name'))]",
+      "properties": {
+        "public": false
+      },
+      "dependsOn": [
+        "service"
+      ]
+    },
+    "app3deployment": {
+      "type": "Microsoft.AppPlatform/Spring/apps/deployments",
+      "apiVersion": "2020-07-01",
+      "name": "[format('{0}/default', format('{0}/{1}', parameters('serviceName'), parameters('app3Name')))]",
+      "properties": {
+        "source": {
+          "relativePath": "<default>",
+          "type": "Jar"
+        }
+      },
+      "dependsOn": [
+        "app3"
+      ]
+    },
+    "activeDeployment": {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "setActiveDeployment",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "app1Name": {
+            "value": "[format('{0}/{1}', parameters('serviceName'), parameters('app1Name'))]"
+          },
+          "app2Name": {
+            "value": "[format('{0}/{1}', parameters('serviceName'), parameters('app2Name'))]"
+          },
+          "app3Name": {
+            "value": "[format('{0}/{1}', parameters('serviceName'), parameters('app3Name'))]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "languageVersion": "2.0",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "dev",
+              "templateHash": "3565530906519899495"
+            }
+          },
+          "parameters": {
+            "app1Name": {
+              "type": "string"
+            },
+            "app2Name": {
+              "type": "string"
+            },
+            "app3Name": {
+              "type": "string"
+            }
+          },
+          "resources": {
+            "app1": {
+              "type": "Microsoft.AppPlatform/Spring/apps",
+              "apiVersion": "2020-07-01",
+              "name": "[parameters('app1Name')]",
+              "properties": {
+                "public": true,
+                "activeDeploymentName": "default"
+              }
+            },
+            "app2": {
+              "type": "Microsoft.AppPlatform/Spring/apps",
+              "apiVersion": "2020-07-01",
+              "name": "[parameters('app2Name')]",
+              "properties": {
+                "public": false,
+                "activeDeploymentName": "default"
+              }
+            },
+            "app3": {
+              "type": "Microsoft.AppPlatform/Spring/apps",
+              "apiVersion": "2020-07-01",
+              "name": "[parameters('app3Name')]",
+              "properties": {
+                "public": false,
+                "activeDeploymentName": "default"
+              }
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "app1",
+        "app1deployment",
+        "app2",
+        "app2deployment",
+        "app3",
+        "app3deployment"
+      ]
+    }
+  }
+}

@@ -1,0 +1,117 @@
+// A launch configuration that compiles the extension and then opens it inside a new window
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Extension (dev)",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "--enable-proposed-api=ms-azuretools.vscode-bicep",
+        "--extensionDevelopmentPath=${workspaceRoot}"
+      ],
+      "sourceMaps": true,
+      "preLaunchTask": "${defaultBuildTask}",
+      "env": {
+        "BICEP_TRACING_ENABLED": "true",
+        "BICEP_LANGUAGE_SERVER_PATH": "${workspaceRoot}/../Bicep.LangServer/bin/Debug/net8.0/Bicep.LangServer.dll",
+        // Defaulting to "verbose" when debugging so that new telemetry IDs during development aren't accidentally sent and created before they're finalized
+        "DEBUGTELEMETRY": "v", // "" or "0" or "false": send telemetry as normal; "1": debug mode (no telemetry sent); "verbose": telemetry in console, don't send (from microsoft/vscode-azext-utils)
+      }
+    },
+    {
+      "name": "Launch Extension: Prod",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "--enable-proposed-api=ms-azuretools.vscode-bicep",
+        "--extensionDevelopmentPath=${workspaceRoot}"
+      ],
+      "sourceMaps": true,
+      "preLaunchTask": "build:prod",
+      "env": {
+        "BICEP_LANGUAGE_SERVER_PATH": "${workspaceRoot}/../Bicep.LangServer/bin/Debug/net8.0/Bicep.LangServer.dll"
+      }
+    },
+    {
+      "name": "Launch Extension: Watch",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "--enable-proposed-api=ms-azuretools.vscode-bicep",
+        "--extensionDevelopmentPath=${workspaceRoot}"
+      ],
+      "sourceMaps": true,
+      "preLaunchTask": "watch",
+      "env": {
+        "BICEP_LANGUAGE_SERVER_PATH": "${workspaceRoot}/../Bicep.LangServer/bin/Debug/net8.0/Bicep.LangServer.dll"
+      }
+    },
+    {
+      "name": "Launch Tests: E2E (prod)",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": [
+        "--enable-proposed-api=ms-azuretools.vscode-bicep",
+        "--extensionDevelopmentPath=${workspaceFolder}",
+        "--extensionTestsPath=${workspaceFolder}/out/test/e2e/index"
+      ],
+      "preLaunchTask": "build:e2e",
+      "env": {
+        "BICEP_LANGUAGE_SERVER_PATH": "${workspaceRoot}/../Bicep.LangServer/bin/Debug/net8.0/Bicep.LangServer.dll",
+        "TEST_MODE": "e2e"
+      }
+    },
+    {
+      "name": "Launch Tests: E2E (dev)",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": [
+        "--enable-proposed-api=ms-azuretools.vscode-bicep",
+        "--extensionDevelopmentPath=${workspaceFolder}",
+        "--extensionTestsPath=${workspaceFolder}/out/test/e2e/index"
+      ],
+      "preLaunchTask": "build:e2e:dev",
+      "env": {
+        "BICEP_LANGUAGE_SERVER_PATH": "${workspaceRoot}/../Bicep.LangServer/bin/Debug/net8.0/Bicep.LangServer.dll",
+        "TEST_MODE": "e2e"
+      }
+    },
+    {
+      "name": "Launch Tests: Unit Tests",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": [
+        "--config",
+        "jest.config.unit.js",
+        "--testTimeout=600000",
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+      }
+    },
+    {
+      "name": "Launch Tests: Unit Tests: Current File",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": [
+        "${fileBasenameNoExtension}",
+        "--config",
+        "jest.config.unit.js",
+        "--coverage=false",
+        "--testTimeout=600000",
+      ],
+      "console": "integratedTerminal",
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+      }
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+[
+  {
+    "label": "array",
+    "kind": "class",
+    "detail": "array",
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_array",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "array"
+    }
+  },
+  {
+    "label": "bool",
+    "kind": "class",
+    "detail": "bool",
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_bool",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "bool"
+    }
+  },
+  {
+    "label": "int",
+    "kind": "class",
+    "detail": "int",
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_int",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "int"
+    }
+  },
+  {
+    "label": "object",
+    "kind": "class",
+    "detail": "object",
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_object",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "object"
+    }
+  },
+  {
+    "label": "secureObject",
+    "kind": "snippet",
+    "detail": "Secure object",
+    "documentation": {
+      "kind": "markdown",
+      "value": "```bicep\nobject\n```  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_secureObject",
+    "insertTextFormat": "snippet",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "object"
+    },
+    "additionalTextEdits": [
+      {
+        "range": {},
+        "newText": "@secure()\n"
+      }
+    ]
+  },
+  {
+    "label": "securestring",
+    "kind": "snippet",
+    "detail": "Secure string",
+    "documentation": {
+      "kind": "markdown",
+      "value": "```bicep\nstring\n```  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_securestring",
+    "insertTextFormat": "snippet",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "string"
+    },
+    "additionalTextEdits": [
+      {
+        "range": {},
+        "newText": "@secure()\n"
+      }
+    ]
+  },
+  {
+    "label": "string",
+    "kind": "class",
+    "detail": "string",
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_string",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "string"
+    }
+  }
+]

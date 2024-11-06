@@ -1,0 +1,44 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "dev",
+      "templateHash": "17713232017239809097"
+    }
+  },
+  "parameters": {
+    "hubvpngwname": {
+      "type": "string"
+    },
+    "psk": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Specifies the pre-shared key to use for the VPN Connection"
+      }
+    },
+    "vpnsiteid": {
+      "type": "string",
+      "metadata": {
+        "description": "Specifies the resource id to the VWAN Vpn Site to connect to"
+      }
+    }
+  },
+  "resources": {
+    "hubvpnconnection": {
+      "type": "Microsoft.Network/vpnGateways/vpnConnections",
+      "apiVersion": "2020-05-01",
+      "name": "[format('{0}/HubToOnPremConnection', parameters('hubvpngwname'))]",
+      "properties": {
+        "connectionBandwidth": 10,
+        "enableBgp": true,
+        "sharedKey": "[parameters('psk')]",
+        "remoteVpnSite": {
+          "id": "[parameters('vpnsiteid')]"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.vscode/
+node_modules/
+src/
+# links for the extension readme (https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep)
+# These are converted into github.com links, and not bundled with the extension
+readme-links/
+
+.editorconfig
+.gitignore
+.eslintrc.js
+.vscodeignore
+webpack.config.ts
+tsconfig.e2e.json
+tsconfig.json
+package.params.json
+jest.config.e2e.js
+jest.config.unit.js
+jest.config.snapshot.js

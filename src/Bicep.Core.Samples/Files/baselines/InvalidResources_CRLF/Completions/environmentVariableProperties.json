@@ -1,0 +1,56 @@
+[
+  {
+    "label": "name",
+    "kind": "property",
+    "detail": "name (Required)",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `string`  \nThe name of the environment variable.  \n"
+    },
+    "deprecated": false,
+    "preselect": true,
+    "sortText": "1_name",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "name:"
+    }
+  },
+  {
+    "label": "secureValue",
+    "kind": "property",
+    "detail": "secureValue",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `string`  \nThe value of the secure environment variable.  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_secureValue",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "secureValue:"
+    }
+  },
+  {
+    "label": "value",
+    "kind": "property",
+    "detail": "value",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `string`  \nThe value of the environment variable.  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_value",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "value:"
+    }
+  }
+]

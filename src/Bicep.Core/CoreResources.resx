@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ArtifactsLocationRule_Error_ParamMissing" xml:space="preserve">
+    <value>If an '{0}' parameter is provided, an '{1}' parameter must also be provided.</value>
+    <comment>{0} and {1} are programmatic parameter names (either '_artifactsLocation' or '_artifactsLocationSasToken')</comment>
+  </data>
+  <data name="ArtifactsLocationRule_FixTitle_ChangeType" xml:space="preserve">
+    <value>Change parameter type to '{0}'</value>
+    <comment>{0} = type name</comment>
+  </data>
+  <data name="ArtifactsLocationRule_Error_ParamMustBeType" xml:space="preserve">
+    <value>Artifacts parameter '{0}' must be of type '{1}'</value>
+    <comment>{0}, parameter name, {1} = type name</comment>
+  </data>
+  <data name="ArtifactsLocationRule_Error_ParamMustBeSecure" xml:space="preserve">
+    <value>Artifacts parameter '{0}' must use the @secure() attribute</value>
+    <comment>{0}, parameter name</comment>
+  </data>
+  <data name="BicepConfigCustomSettingsFoundFormatMessage" xml:space="preserve">
+    <value>Custom bicepconfig.json file found ({0}).</value>
+    <comment>message to indicate that a custom settings file was found {0} is the file location</comment>
+  </data>
+  <data name="BicepConfigNoCustomSettingsMessage" xml:space="preserve">
+    <value>No bicepconfig.json found for configuration override.</value>
+  </data>
+  <data name="AdminUsernameShouldNotBeLiteralRuleDescription" xml:space="preserve">
+    <value>Property 'adminUserName' should not use a literal value. Use a param instead.</value>
+  </data>
+  <data name="OutputsShouldNotContainSecretsRuleDescription" xml:space="preserve">
+    <value>Outputs should not contain secrets.</value>
+  </data>
+  <data name="OutputsShouldNotContainSecretsMessageFormat" xml:space="preserve">
+    <value>{0} Found possible secret: {1}</value>
+    <comment>{0} is the rule description as a sentence ending with a period, {1} is the name of what was found, e.g. 'myParameter'</comment>
+  </data>
+  <data name="OutputsShouldNotContainSecretsOutputName" xml:space="preserve">
+    <value>output name '{0}' suggests a secret</value>
+    <comment>{0} name of a programmatic output</comment>
+  </data>
+  <data name="OutputsShouldNotContainSecretsSecureParam" xml:space="preserve">
+    <value>secure value '{0}'</value>
+    <comment>{0} name of a programmatic parameter</comment>
+  </data>
+  <data name="OutputsShouldNotContainSecretsFunction" xml:space="preserve">
+    <value>function '{0}'</value>
+    <comment>{0} is the function name. This string appears in the middle of a sentence, hence doesn't start with capital letter.  Something similar to: Found: function 'listKeys()'</comment>
+  </data>
+  <data name="EnvironmentUrlHardcodedRuleDescription" xml:space="preserve">
+    <value>Environment URLs should not be hardcoded. Use the environment() function to ensure compatibility across clouds.</value>
+  </data>
+  <data name="InterpolateNotConcatFixTitle" xml:space="preserve">
+    <value>Use string interpolation</value>
+  </data>
+  <data name="InterpolateNotConcatRuleDescription" xml:space="preserve">
+    <value>Use string interpolation instead of the concat function.</value>
+  </data>
+  <data name="LinterDisabledFormatMessage" xml:space="preserve">
+    <value>Linter is disabled in settings file located at {0} </value>
+    <comment>{0} is the location of the settings file</comment>
+  </data>
+  <data name="LinterRuleExceptionMessageFormat" xml:space="preserve">
+    <value>Analyzer '{0}' encountered an unexpected exception. {1}</value>
+    <comment>string format to display error exception thrown in Linter Rule</comment>
+  </data>
+  <data name="LocationSetByParameterRuleDescription" xml:space="preserve">
+    <value>Resource location should be specified by a parameter without a default value or one that defaults to 'global' or resourceGroup().location.</value>
+  </data>
+  <data name="NoUnnecessaryDependsOnRuleDescription" xml:space="preserve">
+    <value>No unnecessary dependsOn.</value>
+  </data>
+  <data name="NoUnnecessaryDependsOnRuleCodeFix" xml:space="preserve">
+    <value>Remove unnecessary dependsOn</value>
+  </data>
+  <data name="NoUnnecessaryDependsOnRuleMessage" xml:space="preserve">
+    <value>Remove unnecessary dependsOn entry '{0}'.</value>
+    <comment>Text for linter rule error. {0} is a programmatic expression</comment>
+  </data>
+  <data name="NoHardcodedLocationRuleDescription" xml:space="preserve">
+    <value>A resource's location should not use a hard-coded string or variable value. It should use a parameter, an expression, or the string 'global'.</value>
+  </data>
+  <data name="NoLocExprOutsideParamsRuleError" xml:space="preserve">
+    <value>Use a parameter here instead of '{0}'. 'resourceGroup().location' and 'deployment().location' should only be used as a default value for parameters.</value>
+    <comment>{0} = programmatic expression, e.g. 'resourceGroup().location'</comment>
+  </data>
+  <data name="NoLocExprOutsideParamsRuleDescription" xml:space="preserve">
+    <value>Functions resourceGroup().location and deployment().location should only be used as the default value of a parameter.</value>
+    <comment>{0} = programmatic expression, e.g. 'resourceGroup().location'</comment>
+  </data>
+  <data name="NoHardcodedLocation_ErrorChangeVarToParam" xml:space="preserve">
+    <value>A resource location should not use a hard-coded string or variable value. Change variable '{0}' into a parameter instead.</value>
+    <comment>{0} is a variable name</comment>
+  </data>
+  <data name="NoHardcodedLocation_FixChangeVarToParam" xml:space="preserve">
+    <value>Change variable '{0}' into a parameter instead</value>
+    <comment>{0} is a variable name</comment>
+  </data>
+  <data name="NoHardcodedLocation_FixNewParam" xml:space="preserve">
+    <value>Create new parameter '{0}' with default value {1}</value>
+    <comment>{0} is a variable name, {1} is a programmatic expression</comment>
+  </data>
+  <data name="NoHardcodedLocation_ErrorForResourceLocation" xml:space="preserve">
+    <value>A resource location should not use a hard-coded string or variable value.</value>
+  </data>
+  <data name="NoHardcodedLocation_ErrorForModuleParam" xml:space="preserve">
+    <value>Parameter '{0}' may be used as a resource location in the module and should not be assigned a hard-coded string or variable value.</value>
+    <comment>{0} is programmatic variable name</comment>
+  </data>
+  <data name="NoHardcodedLocation_ErrorSolution" xml:space="preserve">
+    <value>Please use a parameter value, an expression, or the string '{0}'. Found: '{1}'</value>
+  </data>
+  <data name="NoHardcodedLocation_ModuleLocationNeedsExplicitValue" xml:space="preserve">
+    <value>Parameter '{0}' of module '{1}' isn't assigned an explicit value, and its default value may not give the intended behavior for a location-related parameter. You should assign an explicit value to the parameter.</value>
+    <comment>{0}, {1} are programmatic variable names</comment>
+  </data>
+  <data name="NoHardcodedLocation_ResourceLocationShouldBeExpressionOrGlobal" xml:space="preserve">
+    <value>A resource location should be either an expression or the string '{0}'. Found '{1}'</value>
+    <comment>{0} = programmatic string value, e.g. 'global. {1} = programmatic string value, e.g. 'westus'</comment>
+  </data>
+  <data name="ParameterMustBeUsedRuleDescription" xml:space="preserve">
+    <value>All parameters must be used.</value>
+  </data>
+  <data name="ParameterMustBeUsedRuleMessageFormat" xml:space="preserve">
+    <value>Parameter "{0}" is declared but never used.</value>
+    <comment>{0} is the parameter name</comment>
+  </data>
+  <data name="PossibleSecretMessageFunction" xml:space="preserve">
+    <value>function '{0}'</value>
+    <comment>{0} is the function name. This string appears in the middle of a sentence, hence doesn't start with capital letter. Something similar to: Found: function 'listKeys()'</comment>
+  </data>
+  <data name="PossibleSecretMessageSecureParam" xml:space="preserve">
+    <value>secure value '{0}'</value>
+    <comment>{0} is a valid Bicep expression. This string appears in the middle of a sentence, so it doesn't start with a capital letter. Something similar to: Found: secure value 'parameter1'</comment>
+  </data>
+  <data name="SecureParameterDefaultFixTitle" xml:space="preserve">
+    <value>Remove insecure default value</value>
+  </data>
+  <data name="SecureParameterDefaultRuleDescription" xml:space="preserve">
+    <value>Secure parameters should not have hardcoded defaults (except for empty or newGuid()).</value>
+  </data>
+  <data name="SimplifyInterpolationFixTitle" xml:space="preserve">
+    <value>Remove unnecessary string interpolation</value>
+  </data>
+  <data name="SimplifyInterpolationRuleDescription" xml:space="preserve">
+    <value>Remove unnecessary string interpolation.</value>
+  </data>
+  <data name="SimplifyJsonNullFixTitle" xml:space="preserve">
+    <value>Simplify json('null') to null</value>
+  </data>
+  <data name="SimplifyJsonNullRuleDescription" xml:space="preserve">
+    <value>Simplify json('null') to null</value>
+  </data>
+  <data name="UnusedVariableRuleDescription" xml:space="preserve">
+    <value>All variables must be used.</value>
+  </data>
+  <data name="UnusedVariableRuleMessageFormat" xml:space="preserve">
+    <value>Variable "{0}" is declared but never used.</value>
+    <comment>{0} is the variable name</comment>
+  </data>
+  <data name="ProtectCommandToExecuteSecretsRuleDescription" xml:space="preserve">
+    <value>Use protectedSettings for commandToExecute secrets</value>
+  </data>
+  <data name="ProtectCommandToExecuteSecretsRuleMessage" xml:space="preserve">
+    <value>Use protectedSettings for commandToExecute secrets. Found possible secret: {0}</value>
+    <comment>{0} is the description of what was found</comment>
+  </data>
+  <data name="UseStableVMImage" xml:space="preserve">
+    <value>Virtual machines shouldn't use preview images.</value>
+  </data>
+  <data name="UseStableVMImageRuleFixMessageFormat" xml:space="preserve">
+    <value>Virtual machines shouldn't use preview images. Use stable version in imageReference property "{0}".</value>
+  </data>
+  <data name="UnusedExistingResourceRuleDescription" xml:space="preserve">
+    <value>All existing resources must be used.</value>
+  </data>
+  <data name="UnusedExistingResourceRuleMessageFormat" xml:space="preserve">
+    <value>Existing resource "{0}" is declared but never used.</value>
+    <comment>{0} is the resource name</comment>
+  </data>
+  <data name="MaxNumberParametersRuleDescription" xml:space="preserve">
+    <value>Maximum number of parameters used.</value>
+  </data>
+  <data name="MaxNumberParametersRuleMessageFormat" xml:space="preserve">
+    <value>Too many parameters. Number of parameters is limited to {0}.</value>
+  </data>
+  <data name="MaxNumberVariablesRuleDescription" xml:space="preserve">
+    <value>Maximum number of variables used.</value>
+  </data>
+  <data name="MaxNumberVariablesRuleMessageFormat" xml:space="preserve">
+    <value>Too many variables. Number of variables is limited to {0}.</value>
+  </data>
+  <data name="MaxNumberOutputsRuleDescription" xml:space="preserve">
+    <value>Maximum number of outputs used.</value>
+  </data>
+  <data name="MaxNumberOutputsRuleMessageFormat" xml:space="preserve">
+    <value>Too many outputs. Number of outputs is limited to {0}.</value>
+  </data>
+  <data name="MaxNumberResourcesRuleDescription" xml:space="preserve">
+    <value>Maximum number of resources used.</value>
+  </data>
+  <data name="MaxNumberResourcesRuleMessageFormat" xml:space="preserve">
+    <value>Too many resources. Number of resources is limited to {0}.</value>
+  </data>
+  <data name="PreferUnquotedPropertyNames_DeclarationFixTitle" xml:space="preserve">
+    <value>Remove quotes from property name '{0}'</value>
+    <comment>{0} is the property name</comment>
+  </data>
+  <data name="PreferUnquotedPropertyNames_DereferenceFixTitle" xml:space="preserve">
+    <value>Replace array syntax with '{0}'</value>
+    <comment>{0} is a programmatic language expression</comment>
+  </data>
+  <data name="PreferUnquotedPropertyNamesRule_Description" xml:space="preserve">
+    <value>Property names that are valid identifiers should be declared without quotation marks and accessed using dot notation.</value>
+  </data>
+  <data name="SecretsInParamsRule_Description" xml:space="preserve">
+    <value>Parameters that represent secrets must be secure.</value>
+  </data>
+  <data name="SecretsInParamsRule_MessageFormat" xml:space="preserve">
+    <value>Parameter '{0}' may represent a secret (according to its name) and must be declared with the '@secure()' attribute.</value>
+  </data>
+  <data name="SecureParamsInNestedDeployRule_Description" xml:space="preserve">
+    <value>Outer-scoped nested deployment resources should not be used for secure parameters or list* functions.</value>
+  </data>
+  <data name="SecureParamsInNestedDeployRule_Message_SecureParams" xml:space="preserve">
+    <value>'{0}' is an outer scoped nested deployment that accesses secure string parameters ({1}), which could expose their values in deployment history.</value>
+    <comment>{0} = programmatic name, {1} = comma-separated list of programmatic names</comment>
+  </data>
+  <data name="SecureParamsInNestedDeployRule_Message_ListFunction" xml:space="preserve">
+    <value>'{0}' is an outer scoped nested deployment that calls a list* function ("{1}"), which could expose sensitive values in deployment history.</value>
+    <comment>{0} = programmatic name, {1} = programmatic name</comment>
+  </data>
+  <data name="SecureParamsInNestedDeployRule_Solution" xml:space="preserve">
+    <value>Either set the deployment's properties.expressionEvaluationOptions.scope to 'inner' or use a Bicep module instead.</value>
+  </data>
+  <data name="UseResourceSymbolReferenceRule_Description" xml:space="preserve">
+    <value>Use a direct resource symbol reference instead of 'reference' or 'list*' functions.</value>
+  </data>
+  <data name="UseResourceSymbolReferenceRule_CodeFix" xml:space="preserve">
+    <value>Use direct resource reference</value>
+  </data>
+  <data name="UseResourceSymbolReferenceRule_MessageFormat" xml:space="preserve">
+    <value>Use a resource reference instead of invoking function "{0}". This simplifies the syntax and allows Bicep to better understand your deployment dependency graph.</value>
+  </data>
+  <data name="UseParentPropertyRule_Description" xml:space="preserve">
+    <value>Use the parent property instead of formatting child resource names with '/' characters.</value>
+  </data>
+  <data name="UseParentPropertyRule_CodeFix" xml:space="preserve">
+    <value>Use parent property</value>
+  </data>
+  <data name="UseSecureValueForSecureInputsRule_MessageFormat" xml:space="preserve">
+    <value>Property path "{0}" for resources of type "{1}" should be assigned a secure value.</value>
+    <comment>{0} property path
+{1} resource type name</comment>
+  </data>
+  <data name="UseSecureValueForSecureInputsRule_Description" xml:space="preserve">
+    <value>Resource properties expecting secure input should be assigned secure values.</value>
+  </data>
+  <data name="UseParentPropertyRule_MessageFormat" xml:space="preserve">
+    <value>Resource "{0}" has its name formatted as a child of resource "{1}". The syntax can be simplified by using the parent property.</value>
+    <comment>{0} child resource symbolic name
+{1} parent resource symbolic name</comment>
+  </data>
+  <data name="UseResourceIdFunctionsRule_Description" xml:space="preserve">
+    <value>Properties representing a resource ID must be generated appropriately.</value>
+  </data>
+  <data name="UseResourceIdFunctionsRule_MessageFormat" xml:space="preserve">
+    <value>If property "{0}" represents a resource ID, it must use a symbolic resource reference, be a parameter or start with one of these functions: {1}.</value>
+    <comment>{0} programmatic identifier
+{1} comma-separated list of programmatic function names</comment>
+  </data>
+  <data name="UseResourceIdFunctionsRule_NonConformingExprPath" xml:space="preserve">
+    <value>Found nonconforming expression at {0}</value>
+    <comment>{0} programmatic identifiers
+{1} comma-separated list of programmatic function names</comment>
+  </data>
+  <data name="UseStableResourceIdentifiersMessage" xml:space="preserve">
+    <value>Resource identifiers should be reproducible outside of their initial deployment context. </value>
+  </data>
+  <data name="UseStableResourceIdentifiersMessageFormat" xml:space="preserve">
+    <value>Resource identifiers should be reproducible outside of their initial deployment context. Resource {0}'s '{1}' identifier is potentially nondeterministic due to its use of the '{2}' function ({3}).</value>
+    <comment>{0} is the symbolic name of the resource. {1} is the name of the identifier property. {2} is the name of the nondeterministic function used. {3} is the symbol dereference path by which the nondeterministic function call is included.</comment>
+  </data>
+  <data name="UseRecentModuleVersionsRule_Description" xml:space="preserve">
+    <value>Use recent module versions</value>
+  </data>
+  <data name="UseRecentModulesVersionRule_MostRecentVersion" xml:space="preserve">
+    <value>The most recent version is {0}.</value>
+    <comment>{0}: version number, e.g. 1.0.0</comment>
+  </data>
+  <data name="UseRecentModulesVersionRule_CouldNotDownload" xml:space="preserve">
+    <value>Could not download available module versions: {0}</value>
+    <comment>{0}: error message</comment>
+  </data>
+  <data name="UseRecentModulesVersionRule_NotCached" xml:space="preserve">
+    <value>Available module versions have not yet been downloaded. If running from the command line, be sure --no-restore is not specified.</value>
+  </data>
+  <data name="UseRecentModuleVersionRule_ErrorMessageFormat" xml:space="preserve">
+    <value>Use a more recent version of module '{0}'.</value>
+    <comment>{0} = module name (programmatic)</comment>
+  </data>
+  <data name="UseRecentModuleVersionRule_Fix_ReplaceWithMostRecent" xml:space="preserve">
+    <value>Replace with most recent version '{0}'</value>
+    <comment>{0} a programmatic module version, e.g. "1.2.3"</comment>
+  </data>
+  <data name="UseRecentApiVersionRule_Description" xml:space="preserve">
+    <value>Use recent API versions</value>
+  </data>
+  <data name="UseRecentApiVersionRule_ErrorMessageFormat" xml:space="preserve">
+    <value>Use more recent API version for '{0}'. {1}</value>
+    <comment>{0} = fully-qualified resource type name (programmatic), {1} = reason for the failure (sentence with period)</comment>
+  </data>
+  <data name="UseRecentApiVersionRule_AcceptableVersions" xml:space="preserve">
+    <value>Acceptable versions: {0}</value>
+    <comment>{0}: list of acceptable values</comment>
+  </data>
+  <data name="UseRecentApiVersionRule_Fix_ReplaceApiVersion" xml:space="preserve">
+    <value>Replace with {0}</value>
+    <comment>{0} a programmatic apiVersion, format=yyyy-mm-dd-suffix</comment>
+  </data>
+  <data name="UseRecentApiVersionRule_MoreRecentStable" xml:space="preserve">
+    <value>'{0}' is a preview version and there is a more recent non-preview version available.</value>
+  </data>
+  <data name="UseRecentApiVersionRule_StableWithSameDate" xml:space="preserve">
+    <value>'{0}' is a preview version and there is a non-preview version available with the same date.</value>
+  </data>
+  <data name="UseRecentApiVersionRule_TooOld" xml:space="preserve">
+    <value>'{0}' is {1} days old, should be no more than {2} days old, or the most recent.</value>
+  </data>
+  <data name="UseRecentApiVersionRule_UnknownType" xml:space="preserve">
+    <value>Could not find resource type "{0}".</value>
+  </data>
+  <data name="UseRecentApiVersionRule_UnknownTypeSuggestion" xml:space="preserve">
+    <value>Did you mean "{0}"?</value>
+  </data>
+  <data name="UseRecentApiVersionRule_UnknownVersion" xml:space="preserve">
+    <value>Could not find apiVersion {0} for {1}.</value>
+  </data>
+  <data name="DecompilerImperfectionsRule_Description" xml:space="preserve">
+    <value>Some decompiler imperfections may need to be cleaned up manually</value>
+  </data>
+  <data name="DecompilerImperfectionsRule_MayWantToRename" xml:space="preserve">
+    <value>Consider renaming it and removing the suffix (using the editor's rename functionality).</value>
+  </data>
+  <data name="DecompilerImperfectionsRule_Resource" xml:space="preserve">
+    <value>The symbolic name of resource '{0}' appears to have originated from a naming conflict during a decompilation from JSON.</value>
+  </data>
+  <data name="DecompilerImperfectionsRule_Variable" xml:space="preserve">
+    <value>The name of variable '{0}' appears to have originated from a naming conflict during a decompilation from JSON.</value>
+  </data>
+  <data name="MaxNumberAssertsRuleDescription" xml:space="preserve">
+    <value>Maximum number of 'assert' statements used.</value>
+  </data>
+  <data name="MaxNumberAssertsRuleMessageFormat" xml:space="preserve">
+    <value>Too many predeployment conditions. Number of 'assert' statements is limited to {0}.</value>
+  </data>
+  <data name="NoConflictingMetadataRuleDescription" xml:space="preserve">
+    <value>Metadata properties whose value is set by a separate decorator should not be set via the '@metadata()' decorator.</value>
+  </data>
+  <data name="NoConflictingMetadataRuleMessageFormat" xml:space="preserve">
+    <value>The "{0}" metadata property conflicts with the "{1}" decorator and will be overwritten.</value>
+  </data>
+  <data name="NoDeploymentsResourcesRuleDescription" xml:space="preserve">
+    <value>Bicep modules are recommended instead of representing nested or linked deployments as a resource.</value>
+  </data>
+  <data name="NoDeploymentsResourcesRuleMessageFormat" xml:space="preserve">
+    <value>Resource '{0}' of type '{1}' should instead be declared as a Bicep module.</value>
+  </data>
+  <data name="ExperimentalFeatureNames_Asserts" xml:space="preserve">
+    <value>Asserts</value>
+  </data>
+  <data name="ExperimentalFeatureNames_Extensibility" xml:space="preserve">
+    <value>Extensibility</value>
+  </data>
+  <data name="ExperimentalFeatureNames_ResourceTypedParamsAndOutputs" xml:space="preserve">
+    <value>Resource-typed parameters and outputs</value>
+  </data>
+  <data name="ExperimentalFeatureNames_SourceMapping" xml:space="preserve">
+    <value>Source mapping</value>
+  </data>
+  <data name="ExperimentalFeatureNames_SymbolicNameCodegen" xml:space="preserve">
+    <value>Symbolic name code generation</value>
+  </data>
+  <data name="ExperimentalFeatureNames_TestFramework" xml:space="preserve">
+    <value>Test framework</value>
+  </data>
+  <data name="ExperimentalFeatureNames_OptionalModuleNames" xml:space="preserve">
+    <value>Enable optional module names</value>
+  </data>
+  <data name="NoSymbolicReferencesInInnerScopedDeploymentResourcesDescription" xml:space="preserve">
+    <value>Nested deployment resources cannot refer to top-level symbols from within the 'template' property when inner-scoped evaluation is used.</value>
+  </data>
+  <data name="NoSymbolicReferencesInInnerScopedDeploymentResourcesMessageFormat" xml:space="preserve">
+    <value>The symbol "{0}" is declared in the context of the outer deployment and cannot be accessed by expressions within a nested deployment template that uses inner scoping for expression evaluation.</value>
+  </data>
+  <data name="ExperimentalFeatureNames_ResourceDerivedTypes" xml:space="preserve">
+    <value>Resource-derived types</value>
+  </data>
+  <data name="UseSafeAccessRule_Description" xml:space="preserve">
+    <value>Use the safe access (.?) operator instead of checking object contents with the 'contains' function.</value>
+  </data>
+  <data name="UseSafeAccessRule_CodeFix" xml:space="preserve">
+    <value>Use the safe access (.?) operator</value>
+  </data>
+  <data name="UseSafeAccessRule_MessageFormat" xml:space="preserve">
+    <value>The syntax can be simplified by using the safe access (.?) operator.</value>
+  </data>
+  <data name="WhatIfShortCircuitingRuleDescription" xml:space="preserve">
+    <value>Runtime values should not be used to determine resource IDs</value>
+  </data>
+  <data name="WhatIfShortCircuitingRuleMessageFormat" xml:space="preserve">
+    <value>Runtime value '{0}' will reduce the precision of what-if analysis for module '{1}'</value>
+    <comment>{0} Parameter name</comment>
+  </data>
+  <data name="ExperimentalFeatureNames_SecureOutputs" xml:space="preserve">
+    <value>Secure outputs</value>
+  </data>
+</root>

@@ -1,0 +1,23 @@
+[
+  {
+    "label": "two",
+    "kind": "property",
+    "detail": "two (Required)",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `44`  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_two",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "two"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  }
+]

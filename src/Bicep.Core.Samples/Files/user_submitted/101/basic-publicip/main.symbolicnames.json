@@ -1,0 +1,93 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "dev",
+      "templateHash": "1953817791430316649"
+    }
+  },
+  "parameters": {
+    "publicIpName": {
+      "type": "string",
+      "defaultValue": "mypublicip"
+    }
+  },
+  "resources": {
+    "publicIp": {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "publicIp",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "publicIpResourceName": {
+            "value": "[parameters('publicIpName')]"
+          },
+          "dynamicAllocation": {
+            "value": true
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "languageVersion": "2.0",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "dev",
+              "templateHash": "8746644610184295583"
+            }
+          },
+          "parameters": {
+            "publicIpResourceName": {
+              "type": "string"
+            },
+            "publicIpDnsLabel": {
+              "type": "string",
+              "defaultValue": "[format('{0}-{1}', parameters('publicIpResourceName'), newGuid())]"
+            },
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]"
+            },
+            "dynamicAllocation": {
+              "type": "bool"
+            }
+          },
+          "resources": {
+            "publicIp": {
+              "type": "Microsoft.Network/publicIPAddresses",
+              "apiVersion": "2020-06-01",
+              "name": "[parameters('publicIpResourceName')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "publicIPAllocationMethod": "[if(parameters('dynamicAllocation'), 'Dynamic', 'Static')]",
+                "dnsSettings": {
+                  "domainNameLabel": "[parameters('publicIpDnsLabel')]"
+                }
+              }
+            }
+          },
+          "outputs": {
+            "ipFqdn": {
+              "type": "string",
+              "value": "[reference('publicIp').dnsSettings.fqdn]"
+            }
+          }
+        }
+      }
+    }
+  },
+  "outputs": {
+    "ipFqdn": {
+      "type": "string",
+      "value": "[reference('publicIp').outputs.ipFqdn.value]"
+    }
+  }
+}

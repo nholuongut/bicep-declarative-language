@@ -1,0 +1,41 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+using Bicep.Core.Navigation;
+using Bicep.Core.Parsing;
+
+namespace Bicep.Core.Syntax
+{
+    public class OutputDeclarationSyntax : StatementSyntax, ITopLevelNamedDeclarationSyntax
+    {
+        public OutputDeclarationSyntax(IEnumerable<SyntaxBase> leadingNodes, Token keyword, IdentifierSyntax name, SyntaxBase type, SyntaxBase assignment, SyntaxBase value)
+            : base(leadingNodes)
+        {
+            AssertKeyword(keyword, nameof(keyword), LanguageConstants.OutputKeyword);
+            AssertSyntaxType(name, nameof(name), typeof(IdentifierSyntax), typeof(IdentifierSyntax));
+            AssertSyntaxType(assignment, nameof(assignment), typeof(Token), typeof(SkippedTriviaSyntax));
+            AssertTokenType(assignment as Token, nameof(assignment), TokenType.Assignment);
+
+            this.Keyword = keyword;
+            this.Name = name;
+            this.Type = type;
+            this.Assignment = assignment;
+            this.Value = value;
+        }
+
+        public Token Keyword { get; }
+
+        public IdentifierSyntax Name { get; }
+
+        public SyntaxBase Type { get; }
+
+        public SyntaxBase Assignment { get; }
+
+        public SyntaxBase Value { get; }
+
+        public override void Accept(ISyntaxVisitor visitor) => visitor.VisitOutputDeclarationSyntax(this);
+
+        public override TextSpan Span => TextSpan.Between(this.LeadingNodes.FirstOrDefault() ?? this.Keyword, Value);
+
+        public TypeSyntax? OutputType => this.Type as TypeSyntax;
+    }
+}

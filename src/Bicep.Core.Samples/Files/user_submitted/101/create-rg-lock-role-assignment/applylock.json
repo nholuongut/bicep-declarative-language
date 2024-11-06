@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "dev",
+      "templateHash": "6218015697076008944"
+    }
+  },
+  "parameters": {
+    "principalId": {
+      "type": "string",
+      "metadata": {
+        "description": "principalId of the user that will be given contributor access to the resourceGroup"
+      }
+    },
+    "roleDefinitionId": {
+      "type": "string",
+      "metadata": {
+        "description": "roleDefinition to apply to the resourceGroup - default is contributor"
+      }
+    },
+    "roleAssignmentName": {
+      "type": "string",
+      "metadata": {
+        "description": "Unique name for the roleAssignment in the format of a guid"
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/locks",
+      "apiVersion": "2016-09-01",
+      "name": "DontDelete",
+      "properties": {
+        "level": "CanNotDelete",
+        "notes": "Prevent deletion of the resourceGroup"
+      }
+    },
+    {
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2020-04-01-preview",
+      "name": "[guid(parameters('roleAssignmentName'))]",
+      "properties": {
+        "roleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
+        "principalId": "[parameters('principalId')]"
+      }
+    }
+  ]
+}

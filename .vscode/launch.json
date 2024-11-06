@@ -1,0 +1,99 @@
+{
+    "version": "2.0.0",
+    "configurations": [
+        {
+            "name": "VSCode Extension",
+            "type": "extensionHost",
+            "request": "launch",
+            "runtimeExecutable": "${execPath}",
+            "args": [
+                "--enable-proposed-api=ms-azuretools.vscode-bicep",
+                "--extensionDevelopmentPath=${workspaceRoot}/src/vscode-bicep"
+            ],
+            "env": {
+                "BICEP_TRACING_ENABLED": "true",
+
+                // Defaulting to "verbose" when debugging so that new telemetry IDs during development aren't accidentally sent and created before they're finalized
+                "DEBUGTELEMETRY": "v", // "" or "0" or "false": send telemetry as normal; "1": debug mode (no telemetry sent); "verbose": telemetry in console, don't send (from microsoft/vscode-azext-utils)
+            },
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/src/vscode-bicep/out/**/*.js"
+            ],
+            "preLaunchTask": "Build VSIX"
+        },
+        {
+            "name": "CLI",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "Build CLI",
+            "program": "${workspaceFolder}/src/Bicep.Cli/bin/Debug/net8.0/bicep",
+            "args": [
+                "build",
+                "${file}"
+            ],
+          "env": {
+            "BICEP_TRACING_ENABLED": "true"
+          },
+            "cwd": "${workspaceFolder}/src/Bicep.Cli",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "CLI-Test",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "Build CLI",
+            "program": "${workspaceFolder}/src/Bicep.Cli/bin/Debug/net8.0/bicep",
+            "args": [
+                "test",
+                "${file}"
+            ],
+            "env": {
+                "BICEP_TRACING_ENABLED": "true",
+            },
+            "cwd": "${workspaceFolder}/src/Bicep.Cli",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "Playground",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/playground/node_modules/webpack/bin/webpack.js",
+            "args": [
+                "serve"
+            ],
+            "cwd": "${workspaceFolder}/src/playground",
+            "autoAttachChildProcesses": true,
+            "stopOnEntry": false,
+            "preLaunchTask": "Build WASM for Playground"
+        },
+        {
+            "name": "Textmate Tests",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "test"
+            ],
+            "cwd": "${workspaceFolder}/src/textmate"
+        },
+        {
+            "name": "HighlightJs Tests",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "test"
+            ],
+            "cwd": "${workspaceFolder}/src/highlightjs"
+        },
+        {
+            "name": "Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickProcess}"
+        }
+    ]
+}

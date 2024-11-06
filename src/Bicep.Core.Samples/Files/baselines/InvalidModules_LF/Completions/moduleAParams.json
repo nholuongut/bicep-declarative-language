@@ -1,0 +1,74 @@
+[
+  {
+    "label": "arrayParam",
+    "kind": "property",
+    "detail": "arrayParam (Required)",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `array`  \nWrite-only property  \n"
+    },
+    "deprecated": false,
+    "preselect": true,
+    "sortText": "1_arrayParam",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "arrayParam:"
+    }
+  },
+  {
+    "label": "objParam",
+    "kind": "property",
+    "detail": "objParam (Required)",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `object`  \nWrite-only property  \n"
+    },
+    "deprecated": false,
+    "preselect": true,
+    "sortText": "1_objParam",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "objParam:"
+    }
+  },
+  {
+    "label": "stringParamA",
+    "kind": "property",
+    "detail": "stringParamA",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `null | string`  \nWrite-only property  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_stringParamA",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "stringParamA:"
+    }
+  },
+  {
+    "label": "stringParamB",
+    "kind": "property",
+    "detail": "stringParamB (Required)",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `string`  \nWrite-only property  \n"
+    },
+    "deprecated": false,
+    "preselect": true,
+    "sortText": "1_stringParamB",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "stringParamB:"
+    }
+  }
+]

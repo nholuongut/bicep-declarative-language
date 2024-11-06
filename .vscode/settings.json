@@ -1,0 +1,19 @@
+{
+    "eslint.lintTask.enable": true,
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "/.github/workflows/*.yml"
+    },
+    "dotnet.defaultSolution": "Bicep.sln",
+    "cSpell.words": [
+        "azureacr",
+        "bicepconfig",
+        "contoso",
+        "Decorable",
+        "Interpolable",
+        "Newtonsoft",
+        "outdir",
+        "outfile",
+        "outputdir",
+        "sarif"
+    ]
+}

@@ -1,0 +1,422 @@
+[
+  {
+    "label": "additionalCapabilities",
+    "kind": "property",
+    "detail": "additionalCapabilities",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `AdditionalCapabilities`  \nSpecifies additional capabilities enabled or disabled on the virtual machine.  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_additionalCapabilities",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "additionalCapabilities"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  },
+  {
+    "label": "availabilitySet",
+    "kind": "property",
+    "detail": "availabilitySet",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `SubResource`  \nSpecifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Manage the availability of virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). <br><br> For more information on Azure planned maintenance, see [Planned maintenance for virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) <br><br> Currently, a VM can only be added to availability set at creation time. The availability set to which the VM is being added should be under the same resource group as the availability set resource. An existing VM cannot be added to an availability set. <br><br>This property cannot exist along with a non-null properties.virtualMachineScaleSet reference.  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_availabilitySet",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "availabilitySet"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  },
+  {
+    "label": "billingProfile",
+    "kind": "property",
+    "detail": "billingProfile",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `BillingProfile`  \nSpecifies the billing related details of a Azure Spot virtual machine. <br><br>Minimum api-version: 2019-03-01.  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_billingProfile",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "billingProfile"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  },
+  {
+    "label": "diagnosticsProfile",
+    "kind": "property",
+    "detail": "diagnosticsProfile",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `DiagnosticsProfile`  \nSpecifies the boot diagnostic settings state. <br><br>Minimum api-version: 2015-06-15.  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_diagnosticsProfile",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "diagnosticsProfile"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  },
+  {
+    "label": "evictionPolicy",
+    "kind": "property",
+    "detail": "evictionPolicy",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `'Deallocate' | 'Delete' | string`  \nSpecifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. <br><br>For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. <br><br>For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_evictionPolicy",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "evictionPolicy"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  },
+  {
+    "label": "extensionsTimeBudget",
+    "kind": "property",
+    "detail": "extensionsTimeBudget",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `string`  \nSpecifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). <br><br> Minimum api-version: 2020-06-01  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_extensionsTimeBudget",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "extensionsTimeBudget"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  },
+  {
+    "label": "hardwareProfile",
+    "kind": "property",
+    "detail": "hardwareProfile",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `HardwareProfile`  \nSpecifies the hardware settings for the virtual machine.  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_hardwareProfile",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "hardwareProfile"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  },
+  {
+    "label": "host",
+    "kind": "property",
+    "detail": "host",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `SubResource`  \nSpecifies information about the dedicated host that the virtual machine resides in. <br><br>Minimum api-version: 2018-10-01.  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_host",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "host"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  },
+  {
+    "label": "hostGroup",
+    "kind": "property",
+    "detail": "hostGroup",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `SubResource`  \nSpecifies information about the dedicated host group that the virtual machine resides in. <br><br>Minimum api-version: 2020-06-01. <br><br>NOTE: User cannot specify both host and hostGroup properties.  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_hostGroup",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "hostGroup"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  },
+  {
+    "label": "instanceView",
+    "kind": "property",
+    "detail": "instanceView",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `VirtualMachineInstanceView`  \nRead-only property  \nThe virtual machine instance view.  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_instanceView",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "instanceView"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  },
+  {
+    "label": "licenseType",
+    "kind": "property",
+    "detail": "licenseType",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `string`  \nSpecifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_licenseType",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "licenseType"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  },
+  {
+    "label": "networkProfile",
+    "kind": "property",
+    "detail": "networkProfile",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `NetworkProfile`  \nSpecifies the network interfaces of the virtual machine.  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_networkProfile",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "networkProfile"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  },
+  {
+    "label": "osProfile",
+    "kind": "property",
+    "detail": "osProfile",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `OSProfile`  \nSpecifies the operating system settings used while creating the virtual machine. Some of the settings cannot be changed once VM is provisioned.  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_osProfile",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "osProfile"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  },
+  {
+    "label": "priority",
+    "kind": "property",
+    "detail": "priority",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `'Low' | 'Regular' | 'Spot' | string`  \nSpecifies the priority for the virtual machine. <br><br>Minimum api-version: 2019-03-01  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_priority",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "priority"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  },
+  {
+    "label": "provisioningState",
+    "kind": "property",
+    "detail": "provisioningState",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `string`  \nRead-only property  \nThe provisioning state, which only appears in the response.  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_provisioningState",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "provisioningState"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  },
+  {
+    "label": "proximityPlacementGroup",
+    "kind": "property",
+    "detail": "proximityPlacementGroup",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `SubResource`  \nSpecifies information about the proximity placement group that the virtual machine should be assigned to. <br><br>Minimum api-version: 2018-04-01.  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_proximityPlacementGroup",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "proximityPlacementGroup"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  },
+  {
+    "label": "securityProfile",
+    "kind": "property",
+    "detail": "securityProfile",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `SecurityProfile`  \nSpecifies the Security related profile settings for the virtual machine.  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_securityProfile",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "securityProfile"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  },
+  {
+    "label": "storageProfile",
+    "kind": "property",
+    "detail": "storageProfile",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `StorageProfile`  \nSpecifies the storage settings for the virtual machine disks.  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_storageProfile",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "storageProfile"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  },
+  {
+    "label": "virtualMachineScaleSet",
+    "kind": "property",
+    "detail": "virtualMachineScaleSet",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `SubResource`  \nSpecifies information about the virtual machine scale set that the virtual machine should be assigned to. Virtual machines specified in the same virtual machine scale set are allocated to different nodes to maximize availability. Currently, a VM can only be added to virtual machine scale set at creation time. An existing VM cannot be added to a virtual machine scale set. <br><br>This property cannot exist along with a non-null properties.availabilitySet reference. <br><br>Minimum api‐version: 2019‐03‐01  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_virtualMachineScaleSet",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "virtualMachineScaleSet"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  },
+  {
+    "label": "vmId",
+    "kind": "property",
+    "detail": "vmId",
+    "documentation": {
+      "kind": "markdown",
+      "value": "Type: `string`  \nRead-only property  \nSpecifies the VM unique ID which is a 128-bits identifier that is encoded and stored in all Azure IaaS VMs SMBIOS and can be read using platform BIOS commands.  \n"
+    },
+    "deprecated": false,
+    "preselect": false,
+    "sortText": "2_vmId",
+    "insertTextFormat": "plainText",
+    "insertTextMode": "adjustIndentation",
+    "textEdit": {
+      "range": {},
+      "newText": "vmId"
+    },
+    "commitCharacters": [
+      "."
+    ]
+  }
+]

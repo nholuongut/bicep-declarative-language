@@ -1,0 +1,1800 @@
+[
+  {
+    "name": "any",
+    "description": "Converts the specified value to the `any` type.",
+    "fixedParameters": [
+      {
+        "name": "value",
+        "description": "The value to convert to `any` type",
+        "type": "any",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(value: any): any",
+    "parameterTypeSignatures": [
+      "value: any"
+    ]
+  },
+  {
+    "name": "array",
+    "description": "Converts the value to an array.",
+    "fixedParameters": [
+      {
+        "name": "valueToConvert",
+        "description": "The value to convert to an array.",
+        "type": "any",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(valueToConvert: any): array",
+    "parameterTypeSignatures": [
+      "valueToConvert: any"
+    ]
+  },
+  {
+    "name": "base64",
+    "description": "Returns the base64 representation of the input string.",
+    "fixedParameters": [
+      {
+        "name": "inputString",
+        "description": "The value to return as a base64 representation.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(inputString: string): string",
+    "parameterTypeSignatures": [
+      "inputString: string"
+    ]
+  },
+  {
+    "name": "base64ToJson",
+    "description": "Converts a base64 representation to a JSON object.",
+    "fixedParameters": [
+      {
+        "name": "base64Value",
+        "description": "The base64 representation to convert to a JSON object.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(base64Value: string): any",
+    "parameterTypeSignatures": [
+      "base64Value: string"
+    ]
+  },
+  {
+    "name": "base64ToString",
+    "description": "Converts a base64 representation to a string.",
+    "fixedParameters": [
+      {
+        "name": "base64Value",
+        "description": "The base64 representation to convert to a string.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(base64Value: string): string",
+    "parameterTypeSignatures": [
+      "base64Value: string"
+    ]
+  },
+  {
+    "name": "bool",
+    "description": "Converts the parameter to a boolean.",
+    "fixedParameters": [
+      {
+        "name": "value",
+        "description": "The value to convert to a boolean.",
+        "type": "any",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(value: any): bool",
+    "parameterTypeSignatures": [
+      "value: any"
+    ]
+  },
+  {
+    "name": "cidrHost",
+    "description": "Calculates the usable IP address of the host with the specified index on the specified IP address range in CIDR notation.",
+    "fixedParameters": [
+      {
+        "name": "network",
+        "description": "String containing an ip network to convert (must be correct networking format)",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "hostIndex",
+        "description": "The index of the host IP address to return.",
+        "type": "int",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(network: string, hostIndex: int): string",
+    "parameterTypeSignatures": [
+      "network: string",
+      "hostIndex: int"
+    ]
+  },
+  {
+    "name": "cidrSubnet",
+    "description": "Splits the specified IP address range in CIDR notation into subnets with a new CIDR value and returns the IP address range of the subnet with the specified index.",
+    "fixedParameters": [
+      {
+        "name": "network",
+        "description": "String containing an IP address range to convert in CIDR notation.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "cidr",
+        "description": "An integer representing the CIDR to be used to subnet. This value should be equal or larger than the CIDR value in the network parameter.",
+        "type": "int",
+        "required": true
+      },
+      {
+        "name": "subnetIndex",
+        "description": "Index of the desired subnet IP address range to return.",
+        "type": "int",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 3,
+    "maximumArgumentCount": 3,
+    "flags": "default",
+    "typeSignature": "(network: string, cidr: int, subnetIndex: int): string",
+    "parameterTypeSignatures": [
+      "network: string",
+      "cidr: int",
+      "subnetIndex: int"
+    ]
+  },
+  {
+    "name": "concat",
+    "description": "Combines multiple arrays and returns the concatenated array.",
+    "fixedParameters": [],
+    "minimumArgumentCount": 1,
+    "variableParameter": {
+      "namePrefix": "arg",
+      "description": "The array for concatenation",
+      "type": "array",
+      "minimumCount": 1
+    },
+    "flags": "default",
+    "typeSignature": "(... : array): array",
+    "parameterTypeSignatures": [
+      "... : array"
+    ]
+  },
+  {
+    "name": "concat",
+    "description": "Combines multiple string, integer, or boolean values and returns them as a concatenated string.",
+    "fixedParameters": [],
+    "minimumArgumentCount": 1,
+    "variableParameter": {
+      "namePrefix": "arg",
+      "description": "The string, int, or boolean value for concatenation",
+      "type": "bool | int | string",
+      "minimumCount": 1
+    },
+    "flags": "default",
+    "typeSignature": "(... : bool | int | string): string",
+    "parameterTypeSignatures": [
+      "... : bool | int | string"
+    ]
+  },
+  {
+    "name": "contains",
+    "description": "Checks whether an object contains a property. The property name comparison is case-insensitive.",
+    "fixedParameters": [
+      {
+        "name": "object",
+        "description": "The object",
+        "type": "object",
+        "required": true
+      },
+      {
+        "name": "propertyName",
+        "description": "The property name.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(object: object, propertyName: string): bool",
+    "parameterTypeSignatures": [
+      "object: object",
+      "propertyName: string"
+    ]
+  },
+  {
+    "name": "contains",
+    "description": "Checks whether an array contains a value. For arrays of simple values, exact match is done (case-sensitive for strings). For arrays of objects or arrays a deep comparison is done.",
+    "fixedParameters": [
+      {
+        "name": "array",
+        "description": "The array",
+        "type": "array",
+        "required": true
+      },
+      {
+        "name": "itemToFind",
+        "description": "The value to find.",
+        "type": "any",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(array: array, itemToFind: any): bool",
+    "parameterTypeSignatures": [
+      "array: array",
+      "itemToFind: any"
+    ]
+  },
+  {
+    "name": "contains",
+    "description": "Checks whether a string contains a substring. The string comparison is case-sensitive.",
+    "fixedParameters": [
+      {
+        "name": "string",
+        "description": "The string.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "itemToFind",
+        "description": "The value to find.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(string: string, itemToFind: string): bool",
+    "parameterTypeSignatures": [
+      "string: string",
+      "itemToFind: string"
+    ]
+  },
+  {
+    "name": "dataUri",
+    "description": "Converts a value to a data URI.",
+    "fixedParameters": [
+      {
+        "name": "valueToConvert",
+        "description": "The value to convert to a data URI.",
+        "type": "any",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(valueToConvert: any): string",
+    "parameterTypeSignatures": [
+      "valueToConvert: any"
+    ]
+  },
+  {
+    "name": "dataUriToString",
+    "description": "Converts a data URI formatted value to a string.",
+    "fixedParameters": [
+      {
+        "name": "dataUriToConvert",
+        "description": "The data URI value to convert.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(dataUriToConvert: string): string",
+    "parameterTypeSignatures": [
+      "dataUriToConvert: string"
+    ]
+  },
+  {
+    "name": "dateTimeAdd",
+    "description": "Adds a time duration to a base value. ISO 8601 format is expected.",
+    "fixedParameters": [
+      {
+        "name": "base",
+        "description": "The starting datetime value for the addition. [Use ISO 8601 timestamp format](https://en.wikipedia.org/wiki/ISO_8601).",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "duration",
+        "description": "The time value to add to the base. It can be a negative value. Use [ISO 8601 duration format](https://en.wikipedia.org/wiki/ISO_8601#Durations).",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "format",
+        "description": "The output format for the date time result. If not provided, the format of the base value is used. Use either [standard format strings](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings) or [custom format strings](https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings).",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 3,
+    "flags": "default",
+    "typeSignature": "(base: string, duration: string, [format: string]): string",
+    "parameterTypeSignatures": [
+      "base: string",
+      "duration: string",
+      "[format: string]"
+    ]
+  },
+  {
+    "name": "dateTimeFromEpoch",
+    "description": "Converts an epoch time integer value to an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) dateTime string.",
+    "fixedParameters": [
+      {
+        "name": "epochTime",
+        "description": "An epoch time value that will be converted to an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) dateTime formatted string.",
+        "type": "int",
+        "required": false
+      }
+    ],
+    "minimumArgumentCount": 0,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "([epochTime: int]): string",
+    "parameterTypeSignatures": [
+      "[epochTime: int]"
+    ]
+  },
+  {
+    "name": "dateTimeToEpoch",
+    "description": "Converts an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) dateTime string to an epoch time integer value.",
+    "fixedParameters": [
+      {
+        "name": "dateTime",
+        "description": "An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formatted dateTime string to be converted to epoch time.",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "minimumArgumentCount": 0,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "([dateTime: string]): int",
+    "parameterTypeSignatures": [
+      "[dateTime: string]"
+    ]
+  },
+  {
+    "name": "empty",
+    "description": "Determines if an array, object, or string is empty.",
+    "fixedParameters": [
+      {
+        "name": "itemToTest",
+        "description": "The value to check if it is empty.",
+        "type": "array | null | object | string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(itemToTest: array | null | object | string): bool",
+    "parameterTypeSignatures": [
+      "itemToTest: array | null | object | string"
+    ]
+  },
+  {
+    "name": "endsWith",
+    "description": "Determines whether a string ends with a value. The comparison is case-insensitive.",
+    "fixedParameters": [
+      {
+        "name": "stringToSearch",
+        "description": "The value that contains the item to find.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "stringToFind",
+        "description": "The value to find.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(stringToSearch: string, stringToFind: string): bool",
+    "parameterTypeSignatures": [
+      "stringToSearch: string",
+      "stringToFind: string"
+    ]
+  },
+  {
+    "name": "filter",
+    "description": "Filters an array with a custom filtering function.",
+    "fixedParameters": [
+      {
+        "name": "array",
+        "description": "The array to filter.",
+        "type": "array",
+        "required": true
+      },
+      {
+        "name": "predicate",
+        "description": "The predicate applied to each input array element. If false, the item will be filtered out of the output array.",
+        "type": "(any[, int]) => bool",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(array: array, predicate: (any[, int]) => bool): array",
+    "parameterTypeSignatures": [
+      "array: array",
+      "predicate: (any[, int]) => bool"
+    ]
+  },
+  {
+    "name": "first",
+    "description": "Returns the first element of the array.",
+    "fixedParameters": [
+      {
+        "name": "array",
+        "description": "The value to retrieve the first element.",
+        "type": "array",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(array: array): any",
+    "parameterTypeSignatures": [
+      "array: array"
+    ]
+  },
+  {
+    "name": "first",
+    "description": "Returns the first character of the string.",
+    "fixedParameters": [
+      {
+        "name": "string",
+        "description": "The value to retrieve the first character.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(string: string): string",
+    "parameterTypeSignatures": [
+      "string: string"
+    ]
+  },
+  {
+    "name": "flatten",
+    "description": "Takes an array of arrays, and returns an array of sub-array elements, in the original order. Sub-arrays are only flattened once, not recursively.",
+    "fixedParameters": [
+      {
+        "name": "array",
+        "description": "The array of sub-arrays to flatten.",
+        "type": "array[]",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(array: array[]): array",
+    "parameterTypeSignatures": [
+      "array: array[]"
+    ]
+  },
+  {
+    "name": "format",
+    "description": "Creates a formatted string from input values.",
+    "fixedParameters": [
+      {
+        "name": "formatString",
+        "description": "The composite format string.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "variableParameter": {
+      "namePrefix": "arg",
+      "description": "The value to include in the formatted string.",
+      "type": "any",
+      "minimumCount": 0
+    },
+    "flags": "default",
+    "typeSignature": "(formatString: string, ... : any): string",
+    "parameterTypeSignatures": [
+      "formatString: string",
+      "... : any"
+    ]
+  },
+  {
+    "name": "groupBy",
+    "description": "Converts an array to an object containing a lookup from key to array values filtered by said key. Values can be optionally translated using a mapping function.",
+    "fixedParameters": [
+      {
+        "name": "array",
+        "description": "The array to map to an object.",
+        "type": "array",
+        "required": true
+      },
+      {
+        "name": "keyPredicate",
+        "description": "The predicate applied to each input array element to return the object key.",
+        "type": "any => string",
+        "required": true
+      },
+      {
+        "name": "valuePredicate",
+        "description": "The optional predicate applied to each input array element to return the object value.",
+        "type": "any => any",
+        "required": false
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 3,
+    "flags": "default",
+    "typeSignature": "(array: array, keyPredicate: any => string, [valuePredicate: any => any]): object",
+    "parameterTypeSignatures": [
+      "array: array",
+      "keyPredicate: any => string",
+      "[valuePredicate: any => any]"
+    ]
+  },
+  {
+    "name": "guid",
+    "description": "Creates a value in the format of a globally unique identifier based on the values provided as parameters.",
+    "fixedParameters": [],
+    "minimumArgumentCount": 1,
+    "variableParameter": {
+      "namePrefix": "arg",
+      "description": "The value used in the hash function to create the GUID.",
+      "type": "string",
+      "minimumCount": 1
+    },
+    "flags": "default",
+    "typeSignature": "(... : string): string",
+    "parameterTypeSignatures": [
+      "... : string"
+    ]
+  },
+  {
+    "name": "indexOf",
+    "description": "Returns the first position of a value within a string. The comparison is case-insensitive.",
+    "fixedParameters": [
+      {
+        "name": "stringToSearch",
+        "description": "The value that contains the item to find.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "stringToFind",
+        "description": "The value to find.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(stringToSearch: string, stringToFind: string): int",
+    "parameterTypeSignatures": [
+      "stringToSearch: string",
+      "stringToFind: string"
+    ]
+  },
+  {
+    "name": "indexOf",
+    "description": "Returns the first position of a value within an array. For arrays of simple values, exact match is done (case-sensitive for strings). For arrays of objects or arrays a deep comparison is done.",
+    "fixedParameters": [
+      {
+        "name": "array",
+        "description": "The array that contains the item to find.",
+        "type": "array",
+        "required": true
+      },
+      {
+        "name": "itemToFind",
+        "description": "The value to find.",
+        "type": "any",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(array: array, itemToFind: any): int",
+    "parameterTypeSignatures": [
+      "array: array",
+      "itemToFind: any"
+    ]
+  },
+  {
+    "name": "int",
+    "description": "Converts the specified value to an integer.",
+    "fixedParameters": [
+      {
+        "name": "valueToConvert",
+        "description": "The value to convert to an integer.",
+        "type": "int | string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(valueToConvert: int | string): int",
+    "parameterTypeSignatures": [
+      "valueToConvert: int | string"
+    ]
+  },
+  {
+    "name": "intersection",
+    "description": "Returns a single object with the common elements from the parameters.",
+    "fixedParameters": [],
+    "minimumArgumentCount": 2,
+    "variableParameter": {
+      "namePrefix": "object",
+      "description": "The object to use for finding common elements.",
+      "type": "object",
+      "minimumCount": 2
+    },
+    "flags": "default",
+    "typeSignature": "(... : object): object",
+    "parameterTypeSignatures": [
+      "... : object"
+    ]
+  },
+  {
+    "name": "intersection",
+    "description": "Returns a single array with the common elements from the parameters.",
+    "fixedParameters": [],
+    "minimumArgumentCount": 2,
+    "variableParameter": {
+      "namePrefix": "array",
+      "description": "The array to use for finding common elements.",
+      "type": "array",
+      "minimumCount": 2
+    },
+    "flags": "default",
+    "typeSignature": "(... : array): array",
+    "parameterTypeSignatures": [
+      "... : array"
+    ]
+  },
+  {
+    "name": "items",
+    "description": "Returns an array of keys and values for an object. Elements are consistently ordered alphabetically by key.",
+    "fixedParameters": [
+      {
+        "name": "object",
+        "description": "The object to return keys and values for",
+        "type": "object",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(object: object): object[]",
+    "parameterTypeSignatures": [
+      "object: object"
+    ]
+  },
+  {
+    "name": "join",
+    "description": "Joins multiple strings into a single string, separated using a delimiter.",
+    "fixedParameters": [
+      {
+        "name": "inputArray",
+        "description": "An array of strings to join.",
+        "type": "(bool | int | string)[]",
+        "required": true
+      },
+      {
+        "name": "delimiter",
+        "description": "The delimiter to use to join the string.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(inputArray: (bool | int | string)[], delimiter: string): string",
+    "parameterTypeSignatures": [
+      "inputArray: (bool | int | string)[]",
+      "delimiter: string"
+    ]
+  },
+  {
+    "name": "json",
+    "description": "Converts a valid JSON string into a JSON data type.",
+    "fixedParameters": [
+      {
+        "name": "json",
+        "description": "The value to convert to JSON. The string must be a properly formatted JSON string.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(json: string): any",
+    "parameterTypeSignatures": [
+      "json: string"
+    ]
+  },
+  {
+    "name": "last",
+    "description": "Returns the last element of the array.",
+    "fixedParameters": [
+      {
+        "name": "array",
+        "description": "The value to retrieve the last element.",
+        "type": "array",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(array: array): any",
+    "parameterTypeSignatures": [
+      "array: array"
+    ]
+  },
+  {
+    "name": "last",
+    "description": "Returns the last character of the string.",
+    "fixedParameters": [
+      {
+        "name": "string",
+        "description": "The value to retrieve the last character.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(string: string): string",
+    "parameterTypeSignatures": [
+      "string: string"
+    ]
+  },
+  {
+    "name": "lastIndexOf",
+    "description": "Returns the last position of a value within a string. The comparison is case-insensitive.",
+    "fixedParameters": [
+      {
+        "name": "stringToSearch",
+        "description": "The value that contains the item to find.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "stringToFind",
+        "description": "The value to find.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(stringToSearch: string, stringToFind: string): int",
+    "parameterTypeSignatures": [
+      "stringToSearch: string",
+      "stringToFind: string"
+    ]
+  },
+  {
+    "name": "lastIndexOf",
+    "description": "Returns the last position of a value within an array. For arrays of simple values, exact match is done (case-sensitive for strings). For arrays of objects or arrays a deep comparison is done.",
+    "fixedParameters": [
+      {
+        "name": "array",
+        "description": "The array that contains the item to find.",
+        "type": "array",
+        "required": true
+      },
+      {
+        "name": "itemToFind",
+        "description": "The value to find.",
+        "type": "any",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(array: array, itemToFind: any): int",
+    "parameterTypeSignatures": [
+      "array: array",
+      "itemToFind: any"
+    ]
+  },
+  {
+    "name": "length",
+    "description": "Returns the number of characters in a string, elements in an array, or root-level properties in an object.",
+    "fixedParameters": [
+      {
+        "name": "arg",
+        "description": "The string to use for getting the number of characters or the object to use for getting the number of root-level properties.",
+        "type": "object | string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(arg: object | string): int",
+    "parameterTypeSignatures": [
+      "arg: object | string"
+    ]
+  },
+  {
+    "name": "length",
+    "description": "Returns the number of characters in a string, elements in an array, or root-level properties in an object.",
+    "fixedParameters": [
+      {
+        "name": "arg",
+        "description": "The array to use for getting the number of elements.",
+        "type": "array",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(arg: array): int",
+    "parameterTypeSignatures": [
+      "arg: array"
+    ]
+  },
+  {
+    "name": "loadFileAsBase64",
+    "description": "Loads the specified file as base64 string. File loading occurs during compilation, not at runtime. The maximum allowed size is 96 Kb.",
+    "fixedParameters": [
+      {
+        "name": "filePath",
+        "description": "The path to the file that will be loaded.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "generateIntermediateVariableOnIndirectAssignment",
+    "typeSignature": "(filePath: string): string",
+    "parameterTypeSignatures": [
+      "filePath: string"
+    ]
+  },
+  {
+    "name": "loadJsonContent",
+    "description": "Loads the specified JSON file as bicep object. File loading occurs during compilation, not at runtime.",
+    "fixedParameters": [
+      {
+        "name": "filePath",
+        "description": "The path to the file that will be loaded.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "jsonPath",
+        "description": "JSONPath expression to narrow down the loaded file. If not provided, a root element indicator '$' is used",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "encoding",
+        "description": "File encoding. If not provided, UTF-8 will be used.",
+        "type": "'iso-8859-1' | 'us-ascii' | 'utf-16' | 'utf-16BE' | 'utf-8'",
+        "required": false
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 3,
+    "flags": "generateIntermediateVariableAlways",
+    "typeSignature": "(filePath: string, [jsonPath: string], [encoding: 'iso-8859-1' | 'us-ascii' | 'utf-16' | 'utf-16BE' | 'utf-8']): any",
+    "parameterTypeSignatures": [
+      "filePath: string",
+      "[jsonPath: string]",
+      "[encoding: 'iso-8859-1' | 'us-ascii' | 'utf-16' | 'utf-16BE' | 'utf-8']"
+    ]
+  },
+  {
+    "name": "loadTextContent",
+    "description": "Loads the content of the specified file into a string. Content loading occurs during compilation, not at runtime. The maximum allowed content size is 131072 characters (including line endings).",
+    "fixedParameters": [
+      {
+        "name": "filePath",
+        "description": "The path to the file that will be loaded.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "encoding",
+        "description": "File encoding. If not provided, UTF-8 will be used.",
+        "type": "'iso-8859-1' | 'us-ascii' | 'utf-16' | 'utf-16BE' | 'utf-8'",
+        "required": false
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 2,
+    "flags": "generateIntermediateVariableOnIndirectAssignment",
+    "typeSignature": "(filePath: string, [encoding: 'iso-8859-1' | 'us-ascii' | 'utf-16' | 'utf-16BE' | 'utf-8']): string",
+    "parameterTypeSignatures": [
+      "filePath: string",
+      "[encoding: 'iso-8859-1' | 'us-ascii' | 'utf-16' | 'utf-16BE' | 'utf-8']"
+    ]
+  },
+  {
+    "name": "loadYamlContent",
+    "description": "Loads the specified YAML file as bicep object. File loading occurs during compilation, not at runtime.",
+    "fixedParameters": [
+      {
+        "name": "filePath",
+        "description": "The path to the file that will be loaded.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "pathFilter",
+        "description": "The path filter is a JSONPath expression to narrow down the loaded file. If not provided, a root element indicator '$' is used",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "encoding",
+        "description": "File encoding. If not provided, UTF-8 will be used.",
+        "type": "'iso-8859-1' | 'us-ascii' | 'utf-16' | 'utf-16BE' | 'utf-8'",
+        "required": false
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 3,
+    "flags": "generateIntermediateVariableAlways",
+    "typeSignature": "(filePath: string, [pathFilter: string], [encoding: 'iso-8859-1' | 'us-ascii' | 'utf-16' | 'utf-16BE' | 'utf-8']): any",
+    "parameterTypeSignatures": [
+      "filePath: string",
+      "[pathFilter: string]",
+      "[encoding: 'iso-8859-1' | 'us-ascii' | 'utf-16' | 'utf-16BE' | 'utf-8']"
+    ]
+  },
+  {
+    "name": "map",
+    "description": "Applies a custom mapping function to each element of an array and returns the result array.",
+    "fixedParameters": [
+      {
+        "name": "array",
+        "description": "The array to map.",
+        "type": "array",
+        "required": true
+      },
+      {
+        "name": "predicate",
+        "description": "The predicate applied to each input array element, in order to generate the output array.",
+        "type": "(any[, int]) => any",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(array: array, predicate: (any[, int]) => any): array",
+    "parameterTypeSignatures": [
+      "array: array",
+      "predicate: (any[, int]) => any"
+    ]
+  },
+  {
+    "name": "mapValues",
+    "description": "Applies a custom mapping function to the values of an object and returns the result object.",
+    "fixedParameters": [
+      {
+        "name": "object",
+        "description": "The object to map.",
+        "type": "object",
+        "required": true
+      },
+      {
+        "name": "predicate",
+        "description": "The predicate applied to each input object value, in order to generate the output object.",
+        "type": "any => any",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(object: object, predicate: any => any): array",
+    "parameterTypeSignatures": [
+      "object: object",
+      "predicate: any => any"
+    ]
+  },
+  {
+    "name": "max",
+    "description": "Returns the maximum value from the specified integers.",
+    "fixedParameters": [],
+    "minimumArgumentCount": 1,
+    "variableParameter": {
+      "namePrefix": "int",
+      "description": "One of the integers used to calculate the maximum value",
+      "type": "int",
+      "minimumCount": 1
+    },
+    "flags": "default",
+    "typeSignature": "(... : int): int",
+    "parameterTypeSignatures": [
+      "... : int"
+    ]
+  },
+  {
+    "name": "max",
+    "description": "Returns the maximum value from an array of integers.",
+    "fixedParameters": [
+      {
+        "name": "intArray",
+        "description": "The array of integers.",
+        "type": "int[]",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(intArray: int[]): int",
+    "parameterTypeSignatures": [
+      "intArray: int[]"
+    ]
+  },
+  {
+    "name": "min",
+    "description": "Returns the minimum value from the specified integers.",
+    "fixedParameters": [],
+    "minimumArgumentCount": 1,
+    "variableParameter": {
+      "namePrefix": "int",
+      "description": "One of the integers used to calculate the minimum value",
+      "type": "int",
+      "minimumCount": 1
+    },
+    "flags": "default",
+    "typeSignature": "(... : int): int",
+    "parameterTypeSignatures": [
+      "... : int"
+    ]
+  },
+  {
+    "name": "min",
+    "description": "Returns the minimum value from an array of integers.",
+    "fixedParameters": [
+      {
+        "name": "intArray",
+        "description": "The array of integers.",
+        "type": "int[]",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(intArray: int[]): int",
+    "parameterTypeSignatures": [
+      "intArray: int[]"
+    ]
+  },
+  {
+    "name": "nameof",
+    "description": "Returns the name of a declared symbol or property. Evaluation occurs during compilation, not at runtime.",
+    "fixedParameters": [
+      {
+        "name": "symbol",
+        "description": "The declared symbol or property to get the name of.",
+        "type": "any",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "isArgumentValueIndependent",
+    "typeSignature": "(symbol: any): string",
+    "parameterTypeSignatures": [
+      "symbol: any"
+    ]
+  },
+  {
+    "name": "newGuid",
+    "description": "Returns a value in the format of a globally unique identifier. **This function can only be used in the default value for a parameter**.",
+    "fixedParameters": [],
+    "minimumArgumentCount": 0,
+    "maximumArgumentCount": 0,
+    "flags": "paramDefaultsOnly",
+    "typeSignature": "(): string",
+    "parameterTypeSignatures": []
+  },
+  {
+    "name": "objectKeys",
+    "description": "Returns an array of object keys. Elements are consistently ordered alphabetically.",
+    "fixedParameters": [
+      {
+        "name": "object",
+        "description": "The object to return keys for",
+        "type": "object",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(object: object): string[]",
+    "parameterTypeSignatures": [
+      "object: object"
+    ]
+  },
+  {
+    "name": "padLeft",
+    "description": "Returns a right-aligned string by adding characters to the left until reaching the total specified length.",
+    "fixedParameters": [
+      {
+        "name": "valueToPad",
+        "description": "The value to right-align.",
+        "type": "int | string",
+        "required": true
+      },
+      {
+        "name": "totalLength",
+        "description": "The total number of characters in the returned string.",
+        "type": "int",
+        "required": true
+      },
+      {
+        "name": "paddingCharacter",
+        "description": "The character to use for left-padding until the total length is reached. The default value is a space.",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 3,
+    "flags": "default",
+    "typeSignature": "(valueToPad: int | string, totalLength: int, [paddingCharacter: string]): string",
+    "parameterTypeSignatures": [
+      "valueToPad: int | string",
+      "totalLength: int",
+      "[paddingCharacter: string]"
+    ]
+  },
+  {
+    "name": "parseCidr",
+    "description": "Parses an IP address range in CIDR notation to get various properties of the address range.",
+    "fixedParameters": [
+      {
+        "name": "network",
+        "description": "String in CIDR notation containing an IP address range to be converted.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(network: string): parseCidr",
+    "parameterTypeSignatures": [
+      "network: string"
+    ]
+  },
+  {
+    "name": "range",
+    "description": "Creates an array of integers from a starting integer and containing a number of items.",
+    "fixedParameters": [
+      {
+        "name": "startIndex",
+        "description": "The first integer in the array. The sum of startIndex and count must be no greater than 2147483647.",
+        "type": "int",
+        "required": true
+      },
+      {
+        "name": "count",
+        "description": "The number of integers in the array. Must be non-negative integer up to 10000.",
+        "type": "int",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(startIndex: int, count: int): int[]",
+    "parameterTypeSignatures": [
+      "startIndex: int",
+      "count: int"
+    ]
+  },
+  {
+    "name": "reduce",
+    "description": "Reduces an array with a custom reduce function.",
+    "fixedParameters": [
+      {
+        "name": "array",
+        "description": "The array to reduce.",
+        "type": "array",
+        "required": true
+      },
+      {
+        "name": "initialValue",
+        "description": "The initial value.",
+        "type": "any",
+        "required": true
+      },
+      {
+        "name": "predicate",
+        "description": "The predicate used to aggregate the current value and the next value. ",
+        "type": "(any, any[, int]) => any",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 3,
+    "maximumArgumentCount": 3,
+    "flags": "default",
+    "typeSignature": "(array: array, initialValue: any, predicate: (any, any[, int]) => any): any",
+    "parameterTypeSignatures": [
+      "array: array",
+      "initialValue: any",
+      "predicate: (any, any[, int]) => any"
+    ]
+  },
+  {
+    "name": "replace",
+    "description": "Returns a new string with all instances of one string replaced by another string.",
+    "fixedParameters": [
+      {
+        "name": "originalString",
+        "description": "The original string.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "oldString",
+        "description": "The string to be removed from the original string.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "newString",
+        "description": "The string to add in place of the removed string.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 3,
+    "maximumArgumentCount": 3,
+    "flags": "default",
+    "typeSignature": "(originalString: string, oldString: string, newString: string): string",
+    "parameterTypeSignatures": [
+      "originalString: string",
+      "oldString: string",
+      "newString: string"
+    ]
+  },
+  {
+    "name": "shallowMerge",
+    "description": "Returns a single object with all elements from the parameters. If there are duplicate keys, the last key wins.",
+    "fixedParameters": [
+      {
+        "name": "entries",
+        "description": "The array of objects to merge.",
+        "type": "object[]",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(entries: object[]): object",
+    "parameterTypeSignatures": [
+      "entries: object[]"
+    ]
+  },
+  {
+    "name": "skip",
+    "description": "Returns an array with all the elements after the specified number in the array.",
+    "fixedParameters": [
+      {
+        "name": "originalValue",
+        "description": "The array to use for skipping.",
+        "type": "array",
+        "required": true
+      },
+      {
+        "name": "numberToSkip",
+        "description": "The number of elements to skip. If this value is 0 or less, all the elements in the value are returned. If it is larger than the length of the array, an empty array is returned.",
+        "type": "int",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(originalValue: array, numberToSkip: int): array",
+    "parameterTypeSignatures": [
+      "originalValue: array",
+      "numberToSkip: int"
+    ]
+  },
+  {
+    "name": "skip",
+    "description": "Returns a string with all the characters after the specified number in the string.",
+    "fixedParameters": [
+      {
+        "name": "originalValue",
+        "description": "The string to use for skipping.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "numberToSkip",
+        "description": "The number of characters to skip. If this value is 0 or less, all the characters in the value are returned. If it is larger than the length of the string, an empty string is returned.",
+        "type": "int",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(originalValue: string, numberToSkip: int): string",
+    "parameterTypeSignatures": [
+      "originalValue: string",
+      "numberToSkip: int"
+    ]
+  },
+  {
+    "name": "sort",
+    "description": "Sorts an array with a custom sort function.",
+    "fixedParameters": [
+      {
+        "name": "array",
+        "description": "The array to sort.",
+        "type": "array",
+        "required": true
+      },
+      {
+        "name": "predicate",
+        "description": "The predicate used to compare two array elements for ordering. If true, the second element will be ordered after the first in the output array.",
+        "type": "(any, any) => bool",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(array: array, predicate: (any, any) => bool): array",
+    "parameterTypeSignatures": [
+      "array: array",
+      "predicate: (any, any) => bool"
+    ]
+  },
+  {
+    "name": "split",
+    "description": "Returns an array of strings that contains the substrings of the input string that are delimited by the specified delimiters.",
+    "fixedParameters": [
+      {
+        "name": "inputString",
+        "description": "The string to split.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "delimiter",
+        "description": "The delimiter to use for splitting the string.",
+        "type": "array | string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(inputString: string, delimiter: array | string): string[]",
+    "parameterTypeSignatures": [
+      "inputString: string",
+      "delimiter: array | string"
+    ]
+  },
+  {
+    "name": "startsWith",
+    "description": "Determines whether a string starts with a value. The comparison is case-insensitive.",
+    "fixedParameters": [
+      {
+        "name": "stringToSearch",
+        "description": "The value that contains the item to find.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "stringToFind",
+        "description": "The value to find.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(stringToSearch: string, stringToFind: string): bool",
+    "parameterTypeSignatures": [
+      "stringToSearch: string",
+      "stringToFind: string"
+    ]
+  },
+  {
+    "name": "string",
+    "description": "Converts the specified value to a string.",
+    "fixedParameters": [
+      {
+        "name": "valueToConvert",
+        "description": "The value to convert to string. Any type of value can be converted, including objects and arrays.",
+        "type": "any",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(valueToConvert: any): string",
+    "parameterTypeSignatures": [
+      "valueToConvert: any"
+    ]
+  },
+  {
+    "name": "substring",
+    "description": "Returns a substring that starts at the specified character position and contains the specified number of characters.",
+    "fixedParameters": [
+      {
+        "name": "stringToParse",
+        "description": "The original string from which the substring is extracted.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "startIndex",
+        "description": "The zero-based starting character position for the substring.",
+        "type": "int",
+        "required": true
+      },
+      {
+        "name": "length",
+        "description": "The number of characters for the substring. Must refer to a location within the string. Must be zero or greater.",
+        "type": "int",
+        "required": false
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 3,
+    "flags": "default",
+    "typeSignature": "(stringToParse: string, startIndex: int, [length: int]): string",
+    "parameterTypeSignatures": [
+      "stringToParse: string",
+      "startIndex: int",
+      "[length: int]"
+    ]
+  },
+  {
+    "name": "take",
+    "description": "Returns an array with the specified number of elements from the start of the array.",
+    "fixedParameters": [
+      {
+        "name": "originalValue",
+        "description": "The array to take the elements from.",
+        "type": "array",
+        "required": true
+      },
+      {
+        "name": "numberToTake",
+        "description": "The number of elements to take. If this value is 0 or less, an empty array is returned. If it is larger than the length of the given array, all the elements in the array are returned.",
+        "type": "int",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(originalValue: array, numberToTake: int): array",
+    "parameterTypeSignatures": [
+      "originalValue: array",
+      "numberToTake: int"
+    ]
+  },
+  {
+    "name": "take",
+    "description": "Returns a string with the specified number of characters from the start of the string.",
+    "fixedParameters": [
+      {
+        "name": "originalValue",
+        "description": "The string to take the elements from.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "numberToTake",
+        "description": "The number of characters to take. If this value is 0 or less, an empty string is returned. If it is larger than the length of the given string, all the characters are returned.",
+        "type": "int",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(originalValue: string, numberToTake: int): string",
+    "parameterTypeSignatures": [
+      "originalValue: string",
+      "numberToTake: int"
+    ]
+  },
+  {
+    "name": "toLower",
+    "description": "Converts the specified string to lower case.",
+    "fixedParameters": [
+      {
+        "name": "stringToChange",
+        "description": "The value to convert to lower case.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(stringToChange: string): string",
+    "parameterTypeSignatures": [
+      "stringToChange: string"
+    ]
+  },
+  {
+    "name": "toObject",
+    "description": "Converts an array to an object with a custom key function and optional custom value function.",
+    "fixedParameters": [
+      {
+        "name": "array",
+        "description": "The array to map to an object.",
+        "type": "array",
+        "required": true
+      },
+      {
+        "name": "keyPredicate",
+        "description": "The predicate applied to each input array element to return the object key.",
+        "type": "any => string",
+        "required": true
+      },
+      {
+        "name": "valuePredicate",
+        "description": "The optional predicate applied to each input array element to return the object value.",
+        "type": "any => any",
+        "required": false
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 3,
+    "flags": "default",
+    "typeSignature": "(array: array, keyPredicate: any => string, [valuePredicate: any => any]): object",
+    "parameterTypeSignatures": [
+      "array: array",
+      "keyPredicate: any => string",
+      "[valuePredicate: any => any]"
+    ]
+  },
+  {
+    "name": "toUpper",
+    "description": "Converts the specified string to upper case.",
+    "fixedParameters": [
+      {
+        "name": "stringToChange",
+        "description": "The value to convert to upper case.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(stringToChange: string): string",
+    "parameterTypeSignatures": [
+      "stringToChange: string"
+    ]
+  },
+  {
+    "name": "trim",
+    "description": "Removes all leading and trailing white-space characters from the specified string.",
+    "fixedParameters": [
+      {
+        "name": "stringToTrim",
+        "description": "The value to trim.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(stringToTrim: string): string",
+    "parameterTypeSignatures": [
+      "stringToTrim: string"
+    ]
+  },
+  {
+    "name": "union",
+    "description": "Returns a single object with all elements from the parameters. Duplicate keys are only included once.",
+    "fixedParameters": [],
+    "minimumArgumentCount": 2,
+    "variableParameter": {
+      "namePrefix": "object",
+      "description": "The first object to use for joining elements.",
+      "type": "object",
+      "minimumCount": 2
+    },
+    "flags": "default",
+    "typeSignature": "(... : object): object",
+    "parameterTypeSignatures": [
+      "... : object"
+    ]
+  },
+  {
+    "name": "union",
+    "description": "Returns a single array with all elements from the parameters. Duplicate values are only included once.",
+    "fixedParameters": [],
+    "minimumArgumentCount": 2,
+    "variableParameter": {
+      "namePrefix": "object",
+      "description": "The first array to use for joining elements.",
+      "type": "array",
+      "minimumCount": 2
+    },
+    "flags": "default",
+    "typeSignature": "(... : array): array",
+    "parameterTypeSignatures": [
+      "... : array"
+    ]
+  },
+  {
+    "name": "uniqueString",
+    "description": "Creates a deterministic hash string based on the values provided as parameters. The returned value is 13 characters long.",
+    "fixedParameters": [],
+    "minimumArgumentCount": 1,
+    "variableParameter": {
+      "namePrefix": "arg",
+      "description": "The value used in the hash function to create a unique string.",
+      "type": "string",
+      "minimumCount": 1
+    },
+    "flags": "default",
+    "typeSignature": "(... : string): string",
+    "parameterTypeSignatures": [
+      "... : string"
+    ]
+  },
+  {
+    "name": "uri",
+    "description": "Creates an absolute URI by combining the baseUri and the relativeUri string.",
+    "fixedParameters": [
+      {
+        "name": "baseUri",
+        "description": "The base uri string.",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "relativeUri",
+        "description": "The relative uri string to add to the base uri string.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 2,
+    "maximumArgumentCount": 2,
+    "flags": "default",
+    "typeSignature": "(baseUri: string, relativeUri: string): string",
+    "parameterTypeSignatures": [
+      "baseUri: string",
+      "relativeUri: string"
+    ]
+  },
+  {
+    "name": "uriComponent",
+    "description": "Encodes a URI.",
+    "fixedParameters": [
+      {
+        "name": "stringToEncode",
+        "description": "The value to encode.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(stringToEncode: string): string",
+    "parameterTypeSignatures": [
+      "stringToEncode: string"
+    ]
+  },
+  {
+    "name": "uriComponentToString",
+    "description": "Returns a string of a URI encoded value.",
+    "fixedParameters": [
+      {
+        "name": "uriEncodedString",
+        "description": "The URI encoded value to convert to a string.",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "minimumArgumentCount": 1,
+    "maximumArgumentCount": 1,
+    "flags": "default",
+    "typeSignature": "(uriEncodedString: string): string",
+    "parameterTypeSignatures": [
+      "uriEncodedString: string"
+    ]
+  },
+  {
+    "name": "utcNow",
+    "description": "Returns the current (UTC) datetime value in the specified format. If no format is provided, the ISO 8601 (yyyyMMddTHHmmssZ) format is used. **This function can only be used in the default value for a parameter**.",
+    "fixedParameters": [
+      {
+        "name": "format",
+        "description": "The format. Use either [standard format strings](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings) or [custom format strings](https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings).",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "minimumArgumentCount": 0,
+    "maximumArgumentCount": 1,
+    "flags": "paramDefaultsOnly",
+    "typeSignature": "([format: string]): string",
+    "parameterTypeSignatures": [
+      "[format: string]"
+    ]
+  }
+]

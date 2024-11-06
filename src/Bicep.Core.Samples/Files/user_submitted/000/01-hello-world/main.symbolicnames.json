@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "dev",
+      "templateHash": "5762397120235133178"
+    }
+  },
+  "parameters": {
+    "yourName": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "hello": "Hello World! - Hi"
+  },
+  "resources": {},
+  "outputs": {
+    "helloWorld": {
+      "type": "string",
+      "value": "[format('{0} {1}', variables('hello'), parameters('yourName'))]"
+    }
+  }
+}

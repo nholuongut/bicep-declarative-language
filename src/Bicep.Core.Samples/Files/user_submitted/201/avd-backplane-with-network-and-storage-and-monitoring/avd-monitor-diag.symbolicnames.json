@@ -1,0 +1,101 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "dev",
+      "templateHash": "15977740014990001438"
+    }
+  },
+  "parameters": {
+    "logAnalyticsWorkspaceID": {
+      "type": "string"
+    },
+    "hostpoolName": {
+      "type": "string"
+    },
+    "workspaceName": {
+      "type": "string"
+    }
+  },
+  "resources": {
+    "hostPool": {
+      "existing": true,
+      "type": "Microsoft.DesktopVirtualization/hostPools",
+      "apiVersion": "2020-11-02-preview",
+      "name": "[parameters('hostpoolName')]"
+    },
+    "workspace": {
+      "existing": true,
+      "type": "Microsoft.DesktopVirtualization/workspaces",
+      "apiVersion": "2020-11-02-preview",
+      "name": "[parameters('workspaceName')]"
+    },
+    "avdhpds": {
+      "type": "Microsoft.Insights/diagnosticSettings",
+      "apiVersion": "2017-05-01-preview",
+      "scope": "[format('Microsoft.DesktopVirtualization/hostPools/{0}', parameters('hostpoolName'))]",
+      "name": "hostpool-diag",
+      "properties": {
+        "workspaceId": "[parameters('logAnalyticsWorkspaceID')]",
+        "logs": [
+          {
+            "category": "Checkpoint",
+            "enabled": true
+          },
+          {
+            "category": "Error",
+            "enabled": true
+          },
+          {
+            "category": "Management",
+            "enabled": true
+          },
+          {
+            "category": "Connection",
+            "enabled": true
+          },
+          {
+            "category": "HostRegistration",
+            "enabled": true
+          }
+        ]
+      },
+      "dependsOn": [
+        "hostPool"
+      ]
+    },
+    "avdwsds": {
+      "type": "Microsoft.Insights/diagnosticSettings",
+      "apiVersion": "2017-05-01-preview",
+      "scope": "[format('Microsoft.DesktopVirtualization/workspaces/{0}', parameters('workspaceName'))]",
+      "name": "workspacepool-diag",
+      "properties": {
+        "workspaceId": "[parameters('logAnalyticsWorkspaceID')]",
+        "logs": [
+          {
+            "category": "Checkpoint",
+            "enabled": true
+          },
+          {
+            "category": "Error",
+            "enabled": true
+          },
+          {
+            "category": "Management",
+            "enabled": true
+          },
+          {
+            "category": "Feed",
+            "enabled": true
+          }
+        ]
+      },
+      "dependsOn": [
+        "workspace"
+      ]
+    }
+  }
+}
