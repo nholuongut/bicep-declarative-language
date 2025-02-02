@@ -79,9 +79,12 @@
       },
       "MSTest.TestFramework": {
         "type": "Direct",
-        "requested": "[3.6.1, )",
-        "resolved": "3.6.1",
-        "contentHash": "ugHS5Bz+hlLBd7FSS9JokRrzjmlmDQIx0Hxj6LTJztH/CRkuzNM+hK9Zoa53DR/B4BysEpu16ZXnm6KLH6Vrzg=="
+        "requested": "[3.7.3, )",
+        "resolved": "3.7.3",
+        "contentHash": "Eg4F4zOsAFKlSiLI3tOJfg6BGXeppLhgdupAfVlnpZBXa3rNqxINIeZDJ5/KpoW5BRZyUSZW76Q8yNNk0GqCEQ==",
+        "dependencies": {
+          "MSTest.Analyzers": "3.7.3"
+        }
       },
       "Nerdbank.GitVersioning": {
         "type": "Direct",
@@ -792,6 +795,11 @@
           "System.Threading.AccessControl": "8.0.0",
           "System.Web.Services.Description": "4.10.0"
         }
+      },
+      "MSTest.Analyzers": {
+        "type": "Transitive",
+        "resolved": "3.7.3",
+        "contentHash": "5KcyyxIP0UBRKBs135+S3JQJALc1PmZMzhpR86JIXQ2Dnd/lDiOGNDD8R23X015mWi1K95KQWsGWw+3e7DUrgg=="
       },
       "Nerdbank.Streams": {
         "type": "Transitive",
@@ -1564,7 +1572,7 @@
           "FluentAssertions": "[6.12.1, )",
           "JsonDiffPatch.Net": "[2.3.0, )",
           "MSTest.TestAdapter": "[3.6.2, )",
-          "MSTest.TestFramework": "[3.6.1, )",
+          "MSTest.TestFramework": "[3.7.3, )",
           "Microsoft.NET.Test.Sdk": "[17.11.1, )",
           "Moq": "[4.20.72, )",
           "Newtonsoft.Json.Schema": "[4.0.1, )",
